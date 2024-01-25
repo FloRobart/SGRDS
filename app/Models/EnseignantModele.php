@@ -52,13 +52,13 @@ class EnseignantModele extends Model {
         $this->db = \Config\Database::connect();
     }
 
-    // retourne la liste de tous les produits, triés par nom
+    // retourne la liste de tous les Enseignants, triés par nom
     public function get_all()
     {
         return $this->orderBy('nomEnseignant')->findAll();
     }
 
-    // ajoute un produit défini par un formulaire
+    // ajoute un Enseignant défini par un formulaire
     public function ajout()
     {
         // TODO

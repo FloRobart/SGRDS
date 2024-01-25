@@ -1,13 +1,16 @@
 <?php
 namespace App\Models;
 use CodeIgniter\Model;
-class AdministrateurModele extends Model
-{
+class EtudiantModele extends Model {
+
     // nom de la table gérée par ce modèle
-    protected $table = 'administrateur';
+    protected $table = 'etudiant';
 
     // clé primaire de la table
-    protected $primaryKey = 'idAdministrateur';
+    protected $primaryKey = 'idEtudiant';
+
+    // variables membres = colonnes de la table
+    protected $allowedFields = ['nomEtudiant', 'prenomEtudiant'];
 
     // constructeur
     public function __construct()
@@ -22,17 +25,18 @@ class AdministrateurModele extends Model
         if (!$this->db->tableExists($this->table))
         {
             $fields = [
-                'idAdministrateur' => [
-                    'type' => 'INT',
-                    'constraint' => 11,
-                    'unsigned' => true,
-                    'auto_increment' => true,
+                'nomEtudiant' => [
+                    'type' => 'VARCHAR',
+                    'constraint' => 100,
+                ],
+                'prenomEtudiant' => [
+                    'type' => 'VARCHAR',
+                    'constraint' => 100,
                 ],
             ];
 
             $this->forge->addField($fields);
-            $this->forge->addKey('idAdministrateur', TRUE); // clé primaire
-            $this->forge->addForeignKey('idAdministrateur','Enseignant','idEnseignant'); // clé étrangère
+            $this->forge->addKey('idEtudiant', TRUE); // clé primaire
             $this->forge->createTable($this->table, TRUE);
         }
 
@@ -40,16 +44,15 @@ class AdministrateurModele extends Model
         $this->db = \Config\Database::connect();
     }
 
-    // retourne la liste de tous les Administrateurs, triés par id
+    // retourne la liste de tous les Etudiants, triés par nom
     public function get_all()
     {
-        return $this->orderBy('idAdministrateur')->findAll();
+        return $this->orderBy('nomEtudiant')->findAll();
     }
 
-    // ajoute un Administrateur défini par un formulaire
+    // ajoute un Etudiant défini par un formulaire
     public function ajout()
     {
         // TODO
     }
-
 }
