@@ -10,7 +10,7 @@ class AuthGuard implements FilterInterface
     {
         if (!session()->get('isLoggedIn'))
         {
-            return redirect()->to('/signin');
+            return redirect()->to('/connexionVue');
         }
     }
     
