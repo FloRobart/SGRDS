@@ -12,6 +12,9 @@ class EtudiantModele extends Model {
     // variables membres = colonnes de la table
     protected $allowedFields = ['nomEtudiant', 'prenomEtudiant'];
 
+    // paramètres supplémentaires
+    protected $useAutoIncrement = true;
+
     // constructeur
     public function __construct()
     {

@@ -10,7 +10,6 @@
 -- suppression des tables si elles existent déjà
 -- NB : cela supprime donc les éventuels tuples contenus
 
-DROP TABLE IF EXISTS Enseignant cascade;
 DROP TABLE IF EXISTS Administrateur cascade;
 DROP TABLE IF EXISTS DS cascade;
 DROP TABLE IF EXISTS Etudiant cascade;
@@ -20,10 +19,14 @@ DROP TABLE IF EXISTS Elligible cascade;
 -- création des tables
 
 CREATE TABLE Administrateur (
-    idAdministrateur SERIAL PRIMARY KEY,
-    nomAdministrateur VARCHAR(50) NOT NULL,
-    prenomAdministrateur VARCHAR(50) NOT NULL,
-)
+    id SERIAL PRIMARY KEY,
+    name_directeur VARCHAR(150),
+    email VARCHAR(150),
+    password_directeur VARCHAR(150),
+    created_at TIMESTAMP DEFAULT CURRENT TIMESTAMP,
+    reset_token VARCHAR(255),
+    reset_token_expiration TIMESTAMP,
+);
 
 
 CREATE TABLE DS (
@@ -35,8 +38,6 @@ CREATE TABLE DS (
     dureeDS INTEGER NOT NULL,
     ressourceDS VARCHAR(50) NOT NULL,
     typeDS VARCHAR(8) NOT NULL CHECK (typeDS IN ('ORAL', 'PAPIER', 'MACHINE')),
-    idEnseignant INTEGER NOT NULL,
-    FOREIGN KEY (idEnseignant) REFERENCES Enseignant(idEnseignant)
 );
 
 

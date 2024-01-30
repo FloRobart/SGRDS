@@ -7,7 +7,10 @@ class AdministrateurModele extends Model
     protected $table = 'administrateur';
 
     // clé primaire de la table
-    protected $primaryKey = 'idAdministrateur';
+    protected $primaryKey = 'id';
+
+    // variables membres = colonnes de la table
+    protected $allowedFields = ['name_directeur', 'email', 'password_directeur', 'created_at', 'reset_token', 'reset_token_expiration'];
 
     // constructeur
     public function __construct()
@@ -22,36 +25,45 @@ class AdministrateurModele extends Model
         if (!$this->db->tableExists($this->table))
         {
             $fields = [
-                'idAdministrateur' => [
-                    'type' => 'INT',
-                    'constraint' => 11,
-                    'unsigned' => true,
-                    'auto_increment' => true,
-                ],
-                'loginEnseignant' => [
+                'name_directeur' => [
                     'type' => 'VARCHAR',
-                    'constraint' => 50,
+                    'constraint' => 150,
                 ],
-                'mdpEnseignant' => [
+                'email' => [
                     'type' => 'VARCHAR',
-                    'constraint' => 50,
+                    'constraint' => 150,
+                ],
+                'password_directeur' => [
+                    'type' => 'VARCHAR',
+                    'constraint' => 150,
+                ],
+                'created_at' => [
+                    'type' => 'TIMESTAMP',
+                    'default' => 'CURRENT_TIMESTAMP',
+                ],
+                'reset_token' => [
+                    'type' => 'VARCHAR',
+                    'constraint' => 255,
+                ],
+                'reset_token_expiration' => [
+                    'type' => 'TIMESTAMP',
                 ],
             ];
 
             $this->forge->addField($fields);
-            $this->forge->addKey('idAdministrateur', TRUE); // clé primaire
-            $this->forge->addForeignKey('idAdministrateur','Enseignant','idEnseignant'); // clé étrangère
+            $this->forge->addKey('id', TRUE); // clé primaire
             $this->forge->createTable($this->table, TRUE);
         }
 
         // charger les données
         $this->db = \Config\Database::connect();
     }
+    
 
     // retourne la liste de tous les Administrateurs, triés par id
     public function get_all()
     {
-        return $this->orderBy('idAdministrateur')->findAll();
+        return $this->orderBy('id')->findAll();
     }
 
     // ajoute un Administrateur défini par un formulaire

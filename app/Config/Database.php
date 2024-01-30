@@ -25,12 +25,12 @@ class Database extends Config
      * The default database connection.
      */
     public array $default = [
-        'DSN'          => '',
-        'hostname'     => 'localhost',
-        'username'     => '',
-        'password'     => '',
-        'database'     => '',
-        'DBDriver'     => 'MySQLi',
+        'DSN'          => 'Postgre://gr210441:4321@localhost:5432/gr210441',
+        'hostname'     => 'woody.iut.univ-lehavre.fr',
+        'username'     => 'gr210441',
+        'password'     => '4321',
+        'database'     => 'gr210441',
+        'DBDriver'     => 'Postgre',
         'DBPrefix'     => '',
         'pConnect'     => false,
         'DBDebug'      => true,
@@ -43,7 +43,9 @@ class Database extends Config
         'failover'     => [],
         'port'         => 3306,
         'numberNative' => false,
+        'fakeDel'      => false,
     ];
+
 
     /**
      * This database connection is used when
