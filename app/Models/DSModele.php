@@ -31,9 +31,8 @@ class DSModele extends Model {
                     'unsigned' => true,
                 ],
                 'semestreDS' => [
-                    'type' => 'INT',
-                    'constraint' => 11,
-                    'unsigned' => true,
+                    'type' => 'VARCHAR',
+                    'constraint' => 8,
                 ],
                 'dateDS' => [
                     'type' => 'DATE',

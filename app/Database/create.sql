@@ -19,19 +19,10 @@ DROP TABLE IF EXISTS Elligible cascade;
 
 -- création des tables
 
-CREATE TABLE Enseignant (
-    idEnseignant SERIAL PRIMARY KEY,
-    nomEnseignant VARCHAR(50) NOT NULL,
-    prenomEnseignant VARCHAR(50) NOT NULL,
-    mailEnseignant VARCHAR(50) NOT NULL,
-    mdpEnseignant VARCHAR(50) NOT NULL
-);
-
-
 CREATE TABLE Administrateur (
     idAdministrateur SERIAL PRIMARY KEY,
-    idEnseignant INTEGER NOT NULL,
-    FOREIGN KEY (idEnseignant) REFERENCES Enseignant(idEnseignant)
+    nomAdministrateur VARCHAR(50) NOT NULL,
+    prenomAdministrateur VARCHAR(50) NOT NULL,
 )
 
 

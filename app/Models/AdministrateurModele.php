@@ -28,6 +28,14 @@ class AdministrateurModele extends Model
                     'unsigned' => true,
                     'auto_increment' => true,
                 ],
+                'loginEnseignant' => [
+                    'type' => 'VARCHAR',
+                    'constraint' => 50,
+                ],
+                'mdpEnseignant' => [
+                    'type' => 'VARCHAR',
+                    'constraint' => 50,
+                ],
             ];
 
             $this->forge->addField($fields);

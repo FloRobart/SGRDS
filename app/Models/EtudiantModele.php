@@ -27,11 +27,11 @@ class EtudiantModele extends Model {
             $fields = [
                 'nomEtudiant' => [
                     'type' => 'VARCHAR',
-                    'constraint' => 100,
+                    'constraint' => 50,
                 ],
                 'prenomEtudiant' => [
                     'type' => 'VARCHAR',
-                    'constraint' => 100,
+                    'constraint' => 50,
                 ],
             ];
 
