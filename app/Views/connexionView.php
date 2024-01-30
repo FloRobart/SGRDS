@@ -1,29 +1,68 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <title>Codeigniter Login with Email/Password Example</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-5">
+                    
+                    <h2>Login in</h2>
+                    
+                    <?php if(session()->getFlashdata('msg')):?>
+                        <div class="alert alert-warning">
+                            <?= session()->getFlashdata('msg') ?>
+                        </div>
+                    <?php endif;?>
+                    <form action="<?php echo base_url(); ?>/SigninController/loginAuth" method="post">
+                        <div class="form-group mb-3">
+                            <input type="email" name="email" placeholder="Email" value="<?= set_value('email') ?>" class="form-control" >
+                        </div>
+                        <div class="form-group mb-3">
+                            <input type="password" name="password" placeholder="Password" class="form-control" >
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success">Signin</button>
+                        </div>     
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </body>
+</html>
+<!--
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Connexion</title>
-    <link rel="stylesheet" href="assets/css/connexionStyle.css">
-</head>
-<body>
-    <div class="container">
-        <br /><br /><br />
-        <h3 align="center">Connexion</h3>
-        <br />
-        <form method="post" action="<?php /*echo base_url();*/ ?>connexion/validation">
-            <div class="form-group">
-                <label>Enter Username</label>
-                <input type="text" name="username" class="form-control" value="<?php /* echo set_value('username');*/ ?>" />
-                <span class="text-danger"><?php /*echo form_error('username');*/ ?></span>
-            </div>
-            <div class="form-group">
-                <label>Enter Password</label>
-                <input type="password" name="password" class="form-control" value="<?php /* echo set_value('password');*/ ?>" />
-                <span class="text-danger"><?php /*echo form_error('password');*/ ?></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" name="login" value="Login" class="btn btn-info" />
-            </div>
+    <head>
+        <title>Login Page</title>
+        <meta charset="utf-8">
+        <meta http-equiv="refresh" content="3">
+    </head>
+
+    <body>
+        <?php /* echo isset($error) ? $error : ''; */ ?>
+        <form method="post" action="<?php /* echo site_url('Login/process'); */ ?>">
+            <table cellpadding="2" cellspacing="2">
+                <tr>
+                    <td><th>Username</th></td>
+                    <td><input type="text" name="user"></td>
+                </tr>
+                <tr>
+                    <td><th>Password</th></td>
+                    <td><input type="password" name="password" required="required"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="login" name="login" required="required"></td>
+                </tr>
+            </table>
         </form>
-    </div>
-</body>
+    </body>
 </html>
+-->

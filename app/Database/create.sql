@@ -1,3 +1,13 @@
+-- Création des utilisateurs
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(150),
+    email VARCHAR(150),
+    password VARCHAR(150),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+/*
 -------------------------------------------------------
 -- Projet SGRDS
 -------------------------------------------------------
@@ -75,3 +85,4 @@ CREATE TABLE Eligible (
     FOREIGN KEY (idEtudiant) REFERENCES Etudiant(idEtudiant),
     PRIMARY KEY (idDS, idEtudiant)
 );
+*/
