@@ -6,6 +6,6 @@
             <input type="text" id="email" name="email" placeholder="Adresse e-mail" class="my-2 py-1 w-sm-75 "><br>
             <input type="password" id="password" name="password" placeholder="Mot de passe" class="my-2 py-1 w-sm-75 "><br>
             <input type="password" id="passwordConfirm" name="passwordConfirm" placeholder="Confirmer le mot de passe" class="my-2 py-1 w-sm-75 "><br>
-            <input type="submit" class="btn btn-primary my-2 py-1">
+            <input type="submit" class="btn btn-primary my-2 py-1" value="S'inscrire">
         </form> 
       </div>
