@@ -19,7 +19,7 @@ $routes->get('connexion', 'AuthentificationController::connexion');
 $routes->match(['get', 'post'], 'connexion/validationConnexion', 'AuthentificationController::validationConnexion');
 
 /* Pages de profil (page d'accueil après la connexion) */
-$routes->get('profile', 'ProfileController::index');
+$routes->get('profile', 'AuthentificationController::profile');
 
 /* Envoie du mail pour réinitialiser le mot de passe */
 $routes->match(['get', 'post'], 'forgot_password/sendResetLink', 'AuthentificationController::sendResetLink');
@@ -28,14 +28,13 @@ $routes->match(['get', 'post'], 'forgot_password/sendResetLink', 'Authentificati
 $routes->get('reset_password/(:any)', 'AuthentificationController::reset/$1');
 $routes->match(['get', 'post'], 'forgot_password/update_password','AuthentificationController::updatePassword');
 
-$routes->get('/email/', 'EmailFormController::index');
-$routes->post('/email/send', 'EmailFormController::sendEmailsByButton');
+$routes->get('email', 'EmailFormController::index');
+$routes->post('email/send', 'EmailFormController::sendEmailsByButton');
 
 /* Déconnexion */
 $routes->get('deconnexion', 'AuthentificationController::deconnexion');
 
 /* Test sur les étudiants (pour la bado) */
-$routes->get('/', 'Home::index');
-$routes->get('/etudiants', 'EtudiantControleur::index');
+$routes->get('etudiants', 'EtudiantControleur::index');
 </pre>
 <?php echo view('footer'); ?>
