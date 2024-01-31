@@ -1,9 +1,9 @@
 -------------------------------------------------------
 -- Projet SGRDS
 -------------------------------------------------------
--- script creer.sql
+-- script create.sql
 -- connexion a postgresql:    	psql 
--- execution du script:			=>\i creer.sql
+-- execution du script:			=>\i app/Database/create.sql
 -- verif:						=>\dt
 -------------------------------------------------------
 
@@ -21,9 +21,9 @@ DROP TABLE IF EXISTS etudiant cascade;
 
 CREATE TABLE administrateur (
     id SERIAL PRIMARY KEY,
-    nom_admin VARCHAR(150),
-    email VARCHAR(150),
-    mdp_admin VARCHAR(150),
+    nom_admin VARCHAR(150) NOT NULL,
+    email VARCHAR(150) NOT NULL,
+    mdp_admin VARCHAR(150) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     reset_token VARCHAR(255),
     reset_token_expiration TIMESTAMP
@@ -68,5 +68,3 @@ CREATE TABLE eligible (
     FOREIGN KEY (id_etudiant) REFERENCES etudiant(id_etudiant),
     PRIMARY KEY (id_rattrapage, id_etudiant)
 );
-
-INSERT INTO etudiant (mail_etudiant, nom_etudiant, prenom_etudiant) VALUES ('gomain.rascoin@vmail.bom','Rascoin', 'Gomain');
