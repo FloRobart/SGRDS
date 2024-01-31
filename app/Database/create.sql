@@ -10,68 +10,63 @@
 -- suppression des tables si elles existent déjà
 -- NB : cela supprime donc les éventuels tuples contenus
 
-DROP TABLE IF EXISTS Enseignant cascade;
-DROP TABLE IF EXISTS Administrateur cascade;
-DROP TABLE IF EXISTS DS cascade;
-DROP TABLE IF EXISTS Etudiant cascade;
-DROP TABLE IF EXISTS Rattrapage cascade;
-DROP TABLE IF EXISTS Elligible cascade;
+DROP TABLE IF EXISTS eligible cascade;
+DROP TABLE IF EXISTS rattrapage cascade;
+DROP TABLE IF EXISTS administrateur cascade;
+DROP TABLE IF EXISTS ds cascade;
+DROP TABLE IF EXISTS etudiant cascade;
+
 
 -- création des tables
 
-CREATE TABLE Enseignant (
-    idEnseignant SERIAL PRIMARY KEY,
-    nomEnseignant VARCHAR(50) NOT NULL,
-    prenomEnseignant VARCHAR(50) NOT NULL,
-    mailEnseignant VARCHAR(50) NOT NULL,
-    mdpEnseignant VARCHAR(50) NOT NULL
+CREATE TABLE administrateur (
+    id SERIAL PRIMARY KEY,
+    name_directeur VARCHAR(150),
+    email VARCHAR(150),
+    password_directeur VARCHAR(150),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    reset_token VARCHAR(255),
+    reset_token_expiration TIMESTAMP
 );
 
 
-CREATE TABLE Administrateur (
-    idAdministrateur SERIAL PRIMARY KEY,
-    idEnseignant INTEGER NOT NULL,
-    FOREIGN KEY (idEnseignant) REFERENCES Enseignant(idEnseignant)
-)
-
-
-CREATE TABLE DS (
-    idDS SERIAL PRIMARY KEY,
-    anneeDS INTEGER NOT NULL,
-    semestreDS VARCHAR(8) NOT NULL CHECK (semestreDS IN ('PAIR', 'IMPAIR')),
-    dateDS DATE NOT NULL,
-    heureDS TIME NOT NULL,
-    dureeDS INTEGER NOT NULL,
-    ressourceDS VARCHAR(50) NOT NULL,
-    typeDS VARCHAR(8) NOT NULL CHECK (typeDS IN ('ORAL', 'PAPIER', 'MACHINE')),
-    idEnseignant INTEGER NOT NULL,
-    FOREIGN KEY (idEnseignant) REFERENCES Enseignant(idEnseignant)
+CREATE TABLE ds (
+    id_ds SERIAL PRIMARY KEY,
+    annee_ds INTEGER NOT NULL,
+    semestre_ds VARCHAR(8) NOT NULL CHECK (semestre_ds IN ('PAIR', 'IMPAIR')),
+    date_ds DATE NOT NULL,
+    heure_ds TIME NOT NULL,
+    duree_ds INTEGER NOT NULL,
+    ressource_ds VARCHAR(50) NOT NULL,
+    type_ds VARCHAR(8) NOT NULL CHECK (type_ds IN ('ORAL', 'PAPIER', 'MACHINE'))
 );
 
 
-CREATE TABLE Rattrapage (
-    idRattrapage SERIAL PRIMARY KEY,
-    idDS INTEGER NOT NULL,
-    dateRattrapage DATE NOT NULL,
-    horaireRattrapage TIME NOT NULL,
-    salleRattrapage VARCHAR(3) NOT NULL,
-    etatRattrapage VARCHAR(15) NOT NULL CHECK (etatRattrapage IN ('EN COURS', 'PROGRAMME', 'NEUTRALISE')),
-    FOREIGN KEY (idDS) REFERENCES DS(idDS),
+CREATE TABLE rattrapage (
+    id_rattrapage SERIAL PRIMARY KEY,
+    id_ds INTEGER NOT NULL,
+    date_rattrapage DATE NOT NULL,
+    horaire_rattrapage TIME NOT NULL,
+    salle_rattrapage VARCHAR(3) NOT NULL,
+    etat_rattrapage VARCHAR(15) NOT NULL CHECK (etat_rattrapage IN ('EN COURS', 'PROGRAMME', 'NEUTRALISE')),
+    FOREIGN KEY (id_ds) REFERENCES ds(id_ds)
 );
 
 
-CREATE TABLE Etudiant (
-    idEtudiant SERIAL PRIMARY KEY,
-    nomEtudiant VARCHAR(50) NOT NULL,
-    prenomEtudiant VARCHAR(50) NOT NULL,
+CREATE TABLE etudiant (
+    id_etudiant SERIAL PRIMARY KEY,
+    mail_etudiant VARCHAR(50) NOT NULL,
+    nom_etudiant VARCHAR(50) NOT NULL,
+    prenom_etudiant VARCHAR(50) NOT NULL
 );
 
-
-CREATE TABLE Eligible (
-    idDS INTEGER NOT NULL,
-    idEtudiant INTEGER NOT NULL,
+CREATE TABLE eligible (
+    id_ds INTEGER NOT NULL,
+    id_etudiant INTEGER NOT NULL,
     justification BOOLEAN NOT NULL,
-    FOREIGN KEY (idDS) REFERENCES DS(idDS),
-    FOREIGN KEY (idEtudiant) REFERENCES Etudiant(idEtudiant),
-    PRIMARY KEY (idDS, idEtudiant)
+    FOREIGN KEY (id_ds) REFERENCES ds(id_ds),
+    FOREIGN KEY (id_etudiant) REFERENCES etudiant(id_etudiant),
+    PRIMARY KEY (id_ds, id_etudiant)
 );
+
+INSERT INTO etudiant (nom_etudiant, prenom_etudiant) VALUES ('Rascoin', 'Gomain');
