@@ -29,3 +29,5 @@ $routes->get('/email/', 'EmailFormController::index');
 $routes->post('/email/send', 'EmailFormController::sendEmailsByButton');
     
 
+$routes->get('/', 'Home::index');
+$routes->get('/etudiants', 'EtudiantControleur::index');
