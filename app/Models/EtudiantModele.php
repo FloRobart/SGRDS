@@ -7,6 +7,7 @@ class EtudiantModele extends Model
     
     protected $allowedFields = [
         'id_etudiant',
+        'mail_etudiant',
         'nom_etudiant',
         'prenom_etudiant'
     ];

@@ -10,6 +10,7 @@ class EtudiantControleur extends BaseController
         $modele_etudiant = new EtudiantModele();
         // insère 1 étudiant
         $modele_etudiant->insert([
+            'mail_etudiant' => 'john.doe'.rand(100, 999).'@gmail.com',
             'nom_etudiant' => 'Doe',
             'prenom_etudiant' => 'John'
         ]);

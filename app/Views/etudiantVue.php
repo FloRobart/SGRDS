@@ -15,11 +15,13 @@
         <?php if (!empty($etudiants)) : ?>
             <table border="1">
             <tr>
+                <th>Mail</th>
                 <th>Nom</th>
                 <th>Prénom</th>
             </tr>
             <?php foreach ($etudiants as $etudiant) : ?>
                 <tr>
+                    <td><?= $etudiant['mail_etudiant']; ?></td>
                     <td><?= $etudiant['nom_etudiant']; ?></td>
                     <td><?= $etudiant['prenom_etudiant']; ?></td>
                 </tr>

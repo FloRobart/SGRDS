@@ -4,13 +4,13 @@ use CodeIgniter\Model;
 class RattrapageModele extends Model {
 
     // nom de la table gérée par ce modèle
-    protected $table = 'Rattrapage';
+    protected $table = 'rattrapage';
 
     // clé primaire de la table
-    protected $primaryKey = 'idRattrapage';
+    protected $primaryKey = 'id_rattrapage';
 
     // variables membres = colonnes de la table
-    protected $allowedFields = ['idDS', 'dateRattrapage', 'horaireRattrapage', 'salleRattrapage', 'etatRattrapage'];
+    protected $allowedFields = ['id_ds', 'date_rattrapage', 'horaire_rattrapage', 'salle_rattrapage', 'etat_rattrapage'];
 
     // constructeur
     public function __construct()
@@ -25,30 +25,30 @@ class RattrapageModele extends Model {
         if (!$this->db->tableExists($this->table))
         {
             $fields = [
-                'idDS' => [
+                'id_ds' => [
                     'type' => 'INT',
                     'constraint' => 11,
                     'unsigned' => true,
                 ],
-                'dateRattrapage' => [
+                'date_rattrapage' => [
                     'type' => 'DATE',
                 ],
-                'horaireRattrapage' => [
+                'horaire_rattrapage' => [
                     'type' => 'TIME',
                 ],
-                'salleRattrapage' => [
+                'salle_rattrapage' => [
                     'type' => 'VARCHAR',
                     'constraint' => 3,
                 ],
-                'etatRattrapage' => [
+                'etat_rattrapage' => [
                     'type' => 'VARCHAR',
                     'constraint' => 15,
                 ],
             ];
 
             $this->forge->addField($fields);
-            $this->forge->addKey('idRattrapage', TRUE); // clé primaire
-            $this->forge->addForeignKey('idDS','DS','idDS'); // clé étrangère
+            $this->forge->addKey('id_rattrapage', TRUE); // clé primaire
+            $this->forge->addForeignKey('id_ds','ds','id_ds'); // clé étrangère
             $this->forge->createTable($this->table, TRUE);
         }
 
@@ -56,13 +56,13 @@ class RattrapageModele extends Model {
         $this->db = \Config\Database::connect();
     }
 
-    // retourne la liste de tous les rattrapages, triés par nom
+    // retourne la liste de tous les _rattrapages, triés par nom
     public function get_all()
     {
-        return $this->orderBy('idRattrapage')->findAll();
+        return $this->orderBy('id_rattrapage')->findAll();
     }
 
-    // ajoute un rattrapage défini par un formulaire
+    // ajoute un _rattrapage défini par un formulaire
     public function ajout()
     {
         // TODO
