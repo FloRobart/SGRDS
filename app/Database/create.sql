@@ -21,9 +21,9 @@ DROP TABLE IF EXISTS etudiant cascade;
 
 CREATE TABLE administrateur (
     id SERIAL PRIMARY KEY,
-    name_directeur VARCHAR(150),
+    nom_admin VARCHAR(150),
     email VARCHAR(150),
-    password_directeur VARCHAR(150),
+    mdp_admin VARCHAR(150),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     reset_token VARCHAR(255),
     reset_token_expiration TIMESTAMP
@@ -69,4 +69,4 @@ CREATE TABLE eligible (
     PRIMARY KEY (id_rattrapage, id_etudiant)
 );
 
-INSERT INTO etudiant (nom_etudiant, prenom_etudiant) VALUES ('Rascoin', 'Gomain');
+INSERT INTO etudiant (mail_etudiant, nom_etudiant, prenom_etudiant) VALUES ('gomain.rascoin@vmail.bom','Rascoin', 'Gomain');
