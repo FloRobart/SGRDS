@@ -25,15 +25,15 @@ class Database extends Config
      * The default database connection.
      */
     public array $default = [
-        'DSN'          => 'Postgre://gr210441:4321@woody.iut.univ-lehavre.fr:5432',
-        'hostname'     => 'woody.iut.univ-lehavre.fr',
-        'username'     => 'gr210441',
-        'password'     => '4321',
-        'database'     => 'gr210441',
-        'DBDriver'     => 'Postgre',
+        'DSN'          => 'Postgre://rf211022:|Tr3jkj3rT|@localhost:5432/rf211022',
+        'hostname'     => 'localhost',
+        'username'     => 'rf211022',
+        'password'     => '|Tr3jkj3rT|',
+        'database'     => 'rf211022',
+        'DBDriver'     => 'posgresql',
         'DBPrefix'     => '',
         'pConnect'     => false,
-        'DBDebug'      => true,
+        'DBDebug'      => (ENVIRONMENT !== 'development'),
         'charset'      => 'utf8',
         'DBCollat'     => 'utf8_general_ci',
         'swapPre'      => '',
@@ -41,11 +41,9 @@ class Database extends Config
         'compress'     => false,
         'strictOn'     => false,
         'failover'     => [],
-        'port'         => 3306,
+        'port'         => 5432,
         'numberNative' => false,
-        'fakeDel'      => false,
     ];
-
 
     /**
      * This database connection is used when

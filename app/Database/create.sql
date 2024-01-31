@@ -10,11 +10,11 @@
 -- suppression des tables si elles existent déjà
 -- NB : cela supprime donc les éventuels tuples contenus
 
-DROP TABLE IF EXISTS Eligible cascade;
-DROP TABLE IF EXISTS Rattrapage cascade;
-DROP TABLE IF EXISTS Administrateur cascade;
-DROP TABLE IF EXISTS DS cascade;
-DROP TABLE IF EXISTS Etudiant cascade;
+DROP TABLE IF EXISTS eligible cascade;
+DROP TABLE IF EXISTS rattrapage cascade;
+DROP TABLE IF EXISTS administrateur cascade;
+DROP TABLE IF EXISTS ds cascade;
+DROP TABLE IF EXISTS etudiant cascade;
 
 
 -- création des tables
@@ -53,10 +53,10 @@ CREATE TABLE Rattrapage (
 );
 
 
-CREATE TABLE Etudiant (
-    idEtudiant SERIAL PRIMARY KEY,
-    nomEtudiant VARCHAR(50) NOT NULL,
-    prenomEtudiant VARCHAR(50) NOT NULL
+CREATE TABLE etudiant (
+    id_etudiant SERIAL PRIMARY KEY,
+    nom_etudiant VARCHAR(50) NOT NULL,
+    prenom_etudiant VARCHAR(50) NOT NULL
 );
 -- TODO: ajouter une colonne pour le mail d'étudiant
 
