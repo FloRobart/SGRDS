@@ -2,14 +2,14 @@
 namespace App\Models;  
 use CodeIgniter\Model;
 
-class DirecteurEtudeModel extends Model
+class AdministrateurModel extends Model
 {
-    protected $table = 'directeur_etude';
+    protected $table = 'administrateur';
     
     protected $allowedFields = [
-        'name_directeur',
+        'nom_admin',
         'email',
-        'password_directeur',
+        'mdp_admin',
         'created_at',
         'reset_token',
         'reset_token_expiration'

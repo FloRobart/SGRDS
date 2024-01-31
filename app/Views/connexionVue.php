@@ -38,7 +38,7 @@
                             <input type="email" name="email" id="email" placeholder="Email" value="<?= set_value('email'); ?>" class="form-control">
                         </div>
                         <div class="form-group mb-3">
-                            <input type="password" name="password" placeholder="Password" class="form-control">
+                            <input type="password" name="mdp_admin" placeholder="Password" class="form-control">
                         </div>
 
                         <div class="d-grid mb-3">

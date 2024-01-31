@@ -1,7 +1,7 @@
 <?php 
 namespace App\Controllers;  
 use CodeIgniter\Controller;
-use App\Models\DirecteurEtudeModel;
+use App\Models\AdministrateurModel;
 
 class AuthentificationController extends Controller
 {
@@ -31,20 +31,20 @@ class AuthentificationController extends Controller
     public function validationInscription()
     {
         $rules = [
-            'name_directeur'          => 'required|min_length[2]|max_length[50]',
-            'email'         => 'required|min_length[4]|max_length[100]|valid_email|is_unique[directeur_etude.email]',
-            'name_directeur'      => 'required|min_length[4]|max_length[50]',
-            'confirmpassword'  => 'matches[password]'
+            'nom_admin'       => 'required|min_length[2]|max_length[50]',
+            'email'           => 'required|min_length[4]|max_length[100]|valid_email|is_unique[administrateur.email]',
+            'mdp_admin'       => 'required|min_length[4]|max_length[50]',
+            'confirmpassword' => 'matches[mdp_admin]'
         ];
 
         if($this->validate($rules)){
-            $directeurEtudeModel = new DirecteurEtudeModel();
+            $administrateurModel = new AdministrateurModel();
             $data = [
-                'name_directeur'     => $this->request->getVar('name_directeur'),
+                'nom_admin'     => $this->request->getVar('nom_admin'),
                 'email'    => $this->request->getVar('email'),
-                'name_directeur' => password_hash($this->request->getVar('name_directeur'), PASSWORD_DEFAULT)
+                'mdp_admin' => password_hash($this->request->getVar('mdp_admin'), PASSWORD_DEFAULT)
             ];
-            $directeurEtudeModel->save($data);
+            $administrateurModel->save($data);
             return redirect()->to('connexion');
         }else{
             $data['validation'] = $this->validator;
@@ -72,18 +72,19 @@ class AuthentificationController extends Controller
     public function validationConnexion()
     {
         $session = session();
-        $directeurEtudeModel = new DirecteurEtudeModel();
+        $administrateurModel = new AdministrateurModel();
         $email = $this->request->getVar('email');
-        $password = $this->request->getVar('name_directeur');
+        $password = $this->request->getVar('mdp_admin');
         
-        $data = $directeurEtudeModel->where('email', $email)->first();
+        $data = $administrateurModel->where('email', $email)->first();
         
         if($data){
-            $pass = $data['name_directeur'];
+            $pass = $data['mdp_admin'];
             if(password_verify($password, $pass)){
                 $ses_data = [
+                    'nom_admin' => $data['nom_admin'],
                     'id' => $data['id'],
-                    'name_directeur' => $data['name_directeur'],
+                    'mdp_admin' => $data['mdp_admin'],
                     'email' => $data['email'],
                     'isLoggedIn' => TRUE
                 ];
@@ -126,13 +127,13 @@ class AuthentificationController extends Controller
             return redirect()->to('/connexion');
         }
 
-        $directeurEtudeModel = new DirecteurEtudeModel();
-        $user = $directeurEtudeModel->where('email', $emailTo)->first();
+        $administrateurModel = new AdministrateurModel();
+        $user = $administrateurModel->where('email', $emailTo)->first();
         if ($user)
         {
             // Générer un jeton de réinitialisation de MDP et enregistrer-le dans BD
             $token = bin2hex(random_bytes(16));
-            $directeurEtudeModel->set('reset_token', $token) // Token
+            $administrateurModel->set('reset_token', $token) // Token
             ->set('reset_token_expiration', date('Y-m-d H:i:s', strtotime('+1 hour'))) // Expiration du token
             ->update($user['id']);
 
@@ -176,8 +177,8 @@ class AuthentificationController extends Controller
      */
     public function reset($token)
     {
-        $directeurEtudeModel = new DirecteurEtudeModel();
-        $user = $directeurEtudeModel->where('reset_token', $token)
+        $administrateurModel = new AdministrateurModel();
+        $user = $administrateurModel->where('reset_token', $token)
         ->where('reset_token_expiration >', date('Y-m-d H:i:s'))
         ->first();
         if ($user) {
@@ -195,17 +196,17 @@ class AuthentificationController extends Controller
     public function updatePassword()
     {
         $token = $this->request->getPost('token');
-        $password = $this->request->getPost('name_directeur');
+        $password = $this->request->getPost('nom_admin');
         $confirmPassword = $this->request->getPost('confirm_password');
         // Valider et traiter les données du formulaire
-        $directeurEtudeModel = new DirecteurEtudeModel();
-        $user = $directeurEtudeModel->where('reset_token', $token)
+        $administrateurModel = new AdministrateurModel();
+        $user = $administrateurModel->where('reset_token', $token)
         ->where('reset_token_expiration >', date('Y-m-d H:i:s'))
         ->first();
         if ($user && $password === $confirmPassword) {
         // Mettre à jour le mot de passe et réinitialiser le jeton
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-        $directeurEtudeModel->set('name_directeur', $hashedPassword)
+        $administrateurModel->set('nom_admin', $hashedPassword)
         ->set('reset_token', null)
         ->set('reset_token_expiration', null)
         ->update($user['id']);

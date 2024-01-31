@@ -7,6 +7,7 @@ class ProfileController extends Controller
     public function index()
     {
         $session = session();
-        echo "Hello : ".$session->get('name');
+        // affiche toute les données de la session
+        var_dump($session->get());
     }
 }
