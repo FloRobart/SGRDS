@@ -35,7 +35,7 @@
             var subject = $('#subject').val();
             var message = $('#message').val();
 
-            $.post('<?= base_url('/send') ?>', {
+            $.post('<?= base_url('/email/send') ?>', {
                 email_addresses: emailAddresses,
                 subject: subject,
                 message: message
