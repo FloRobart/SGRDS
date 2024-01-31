@@ -6,78 +6,49 @@ class DSModele extends Model {
     // nom de la table gérée par ce modèle
     protected $table = 'ds';
 
-    // clé primaire de la table
-    protected $primaryKey = 'id_ds';
-
     // variables membres = colonnes de la table
-    protected $allowedFields = ['annee_ds', 'semestre_ds', 'date_ds', 'heure_ds', 'duree_ds', 'ressource_ds', 'type_ds'];
+    protected $allowedFields = [
+        'annee_ds',
+        'semestre_ds',
+        'date_ds',
+        'heure_ds',
+        'duree_ds',
+        'ressource_ds',
+        'type_ds'
+    ];
 
-    // constructeur
-    public function __construct()
+    /**
+     * retourne tous les ds, triés par date
+     */
+    public function getAllDS()
     {
-        // super()
-        parent::__construct();
-
-        // création de la table si elle n'existe pas déjà
-        $this->forge = \Config\Database::forge();
-        $this->db = \Config\Database::connect();
-
-        if (!$this->db->tableExists($this->table))
-        {
-            $fields = [
-                'annee_ds' => [
-                    'type' => 'INT',
-                    'constraint' => 11,
-                    'unsigned' => true,
-                ],
-                'semestre_ds' => [
-                    'type' => 'VARCHAR',
-                    'constraint' => 8,
-                ],
-                'date_ds' => [
-                    'type' => 'DATE',
-                ],
-                'heure_ds' => [
-                    'type' => 'TIME',
-                ],
-                'duree_ds' => [
-                    'type' => 'INT',
-                    'constraint' => 11,
-                    'unsigned' => true,
-                ],
-                'ressource_ds' => [
-                    'type' => 'VARCHAR',
-                    'constraint' => 100,
-                ],
-                'type_ds' => [
-                    'type' => 'VARCHAR',
-                    'constraint' => 100,
-                ],
-                'idEnseignant' => [
-                    'type' => 'INT',
-                    'constraint' => 11,
-                    'unsigned' => true,
-                ],
-            ];
-
-            $this->forge->addField($fields);
-            $this->forge->addKey('id_ds', TRUE); // clé primaire
-            $this->forge->createTable($this->table, TRUE);
-        }
-
-        // charger les données
-        $this->db = \Config\Database::connect();
+        return $this->orderBy('date_ds', 'ASC')->findAll();
     }
 
-    // retourne la liste de tous les ds, triés par nom
-    public function get_all()
+    /**
+     * retourne tous les ds qui ont un rattrapage, triés par date
+     */
+    public function getAllDSWithRattrapage()
     {
-        return $this->orderBy('annee')->findAll();
+        return $this->where('id_ds IN (SELECT id_ds FROM rattrapage)')->orderBy('date_ds', 'ASC')->findAll();
     }
 
-    // ajoute un ds défini par un formulaire
-    public function ajout()
+    /**
+     * retourne tous les ds de la ressource, triés par date
+     * @param $ressource
+     */
+    public function getAllDSByRessource($ressource)
     {
-        // TODO
+        return $this->where('ressource_ds', $ressource)->orderBy('date_ds', 'ASC')->findAll();
     }
+
+    /**
+     * retourne tous les ds du type correspondant, triés par date
+     * @param $type
+     */
+    public function getAllDSByType($type)
+    {
+        return $this->where('type_ds', $type)->orderBy('date_ds', 'ASC')->findAll();
+    }
+
 }
