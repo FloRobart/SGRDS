@@ -20,6 +20,9 @@ class AuthentificationController extends Controller
         return view('homeVue');
     }
 
+    /**
+     * Permet d'afficher la page de profil
+     */
     public function profile()
     {
         echo view('profileVue', session()->get());

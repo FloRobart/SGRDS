@@ -1,4 +1,5 @@
-    <?php echo view('header'); ?>
+<?php echo view('header'); ?>
+<?php if(session()->get('isLoggedIn')): ?>
     <div class="container py-5 px-md-5 text-bg-light w-75 w-md-50  ">
     <form action="<?php echo base_url(); ?>inscription/validationInscription" method="post" class="rounded border py-5 px-md-5 text-bg-white text-center">
         <h1>Inscrire un nouveau directeur des études</h1>
@@ -37,17 +38,12 @@
         });
     }
     </script>
-    <?php echo view('footer'); ?>
-
-<!-- TODO : on perd la session quand on arrive sur cette page -->
-<?php if(session()->get('isLoggedIn')): ?>
 <?php else: ?>
     <?php if(!session()->get('isLoggedIn')): ?>
-        <?php echo view('header'); ?>
         <h1 class="text-center">Vous n'avez pas accès à cette page</h1>
         <div class="text-center">
             <a href="<?php echo base_url(); ?>/" class="btn btn-primary">Retourner à l'accueil</a>
         </div>
-        <?php echo view('footer'); ?>
     <?php endif; ?>
 <?php endif; ?>
+<?php echo view('footer'); ?>
