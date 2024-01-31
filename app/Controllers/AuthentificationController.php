@@ -20,7 +20,7 @@ class AuthentificationController extends Controller
      */
     public function inscription()
     {
-        return view('inscriptionVue', []);
+        return view('forminscription', []);
     }
 
     /**
