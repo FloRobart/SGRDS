@@ -4,7 +4,7 @@ use CodeIgniter\Model;
 class EtudiantModele extends Model {
 
     // nom de la table gérée par ce modèle
-    protected $table = 'etudiant';
+    protected $table = 'Etudiant';
 
     // clé primaire de la table
     protected $primaryKey = 'idEtudiant';
@@ -13,6 +13,7 @@ class EtudiantModele extends Model {
     protected $allowedFields = ['nomEtudiant', 'prenomEtudiant'];
 
     // paramètres supplémentaires
+    protected $returnType = 'array';
     protected $useAutoIncrement = true;
 
     // constructeur

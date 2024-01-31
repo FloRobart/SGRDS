@@ -4,7 +4,7 @@ use CodeIgniter\Model;
 class AdministrateurModele extends Model
 {
     // nom de la table gérée par ce modèle
-    protected $table = 'administrateur';
+    protected $table = 'Administrateur';
 
     // clé primaire de la table
     protected $primaryKey = 'id';

@@ -4,7 +4,7 @@ use CodeIgniter\Model;
 class DSModele extends Model {
 
     // nom de la table gérée par ce modèle
-    protected $table = 'ds';
+    protected $table = 'DS';
 
     // clé primaire de la table
     protected $primaryKey = 'idDS';

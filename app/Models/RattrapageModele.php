@@ -4,7 +4,7 @@ use CodeIgniter\Model;
 class RattrapageModele extends Model {
 
     // nom de la table gérée par ce modèle
-    protected $table = 'rattrapage';
+    protected $table = 'Rattrapage';
 
     // clé primaire de la table
     protected $primaryKey = 'idRattrapage';

@@ -9,15 +9,13 @@
  <?php if (!empty($etudiants)) : ?>
  <table border="1">
  <tr>
- <th>Numéro</th>
  <th>Nom</th>
  <th>Prénom</th>
  </tr>
  <?php foreach ($etudiants as $etudiant) : ?>
  <tr>
- <td><?= $etudiant['numero']; ?></td>
- <td><?= $etudiant['nom']; ?></td>
- <td><?= $etudiant['prenom']; ?></td>
+ <td><?= $etudiant['nomEtudiant']; ?></td>
+ <td><?= $etudiant['prenomEtudiant']; ?></td>
  </tr>
  <?php endforeach; ?>
  </table>

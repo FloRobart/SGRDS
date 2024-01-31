@@ -9,14 +9,23 @@ class EtudiantControleur extends BaseController
         $modele_etudiant = new EtudiantModele();
         //C R U D
         //Ajout (insert)
-        $donnees1 =['nom' => "Rascoin", 'prenom' => "Gomain"];
-        $donnees2 =['nom' => "Erea Hell", 'prenom' => "BTSteban"];
-        $donnees3 =['nom' => "Flobart", 'prenom' => "Boris"];
-        $donnees4 =['nom' => "Fizet", 'prenom' => "Blorian"];
+        $donnees1 =['nomEtudiant' => "Rascoin", 'prenomEtudiant' => "Gomain"];
+        $donnees2 =['nomEtudiant' => "Erea Hell", 'prenomEtudiant' => "BTSteban"];
+        $donnees3 =['nomEtudiant' => "Flobart", 'prenomEtudiant' => "Boris"];
+        $donnees4 =['nomEtudiant' => "Fizet", 'prenomEtudiant' => "Blorian"];
+
         $modele_etudiant ->insert($donnees1);
+        $id1 = $modele_etudiant->insertID();
+
         $modele_etudiant ->insert($donnees2);
+        $id2 = $modele_etudiant->insertID();
+
         $modele_etudiant ->insert($donnees3);
+        $id3 = $modele_etudiant->insertID();
+
         $modele_etudiant ->insert($donnees4);
+        $id4 = $modele_etudiant->insertID();
+
         //Lecture (find (une seule ligne) ou findAll (toutes les lignes))
         $liste = $modele_etudiant->findAll();
         var_dump($liste);
