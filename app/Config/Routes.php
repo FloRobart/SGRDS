@@ -27,7 +27,10 @@ $routes->match(['get', 'post'], 'updatePassword','AuthentificationController::up
 
 $routes->get('/email/', 'EmailFormController::index');
 $routes->post('/email/send', 'EmailFormController::sendEmailsByButton');
-    
 
+/* Déconnexion */
+$routes->get('deconnexion', 'AuthentificationController::deconnexion');
+
+/* Test sur les étudiants (pour la bado) */
 $routes->get('/', 'Home::index');
 $routes->get('/etudiants', 'EtudiantControleur::index');

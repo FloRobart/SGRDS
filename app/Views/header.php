@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +18,11 @@
               </a>
               <div class="text-end">
                 <!-- A changer par Déconnexion une fois connecté -->
-                <button type="button" class="btn btn-primary">Connexion</button>
+                <?php if(session()->get('isLoggedIn')): ?>
+                  <a href="<?php echo base_url(); ?>/deconnexion" class="btn btn-warning">Déconnexion</a>
+                <?php else: ?>
+                  <a href="<?php echo base_url(); ?>/connexion" class="btn btn-primary">Connexion</a>
+                <?php endif; ?>
                 <!-- <button type="button" class="btn btn-warning">Déconnexion</button> -->
               </div>
             </div>
