@@ -4,7 +4,7 @@ use CodeIgniter\Model;
 class AdministrateurModele extends Model
 {
     // nom de la table gérée par ce modèle
-    protected $table = 'Administrateur';
+    protected $table = 'administrateur';
 
     // clé primaire de la table
     protected $primaryKey = 'id';
@@ -60,13 +60,13 @@ class AdministrateurModele extends Model
     }
     
 
-    // retourne la liste de tous les Administrateurs, triés par id
+    // retourne la liste de tous les administrateurs, triés par id
     public function get_all()
     {
         return $this->orderBy('id')->findAll();
     }
 
-    // ajoute un Administrateur défini par un formulaire
+    // ajoute un administrateur défini par un formulaire
     public function ajout()
     {
         // TODO

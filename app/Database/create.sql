@@ -19,7 +19,7 @@ DROP TABLE IF EXISTS etudiant cascade;
 
 -- création des tables
 
-CREATE TABLE Administrateur (
+CREATE TABLE administrateur (
     id SERIAL PRIMARY KEY,
     name_directeur VARCHAR(150),
     email VARCHAR(150),
@@ -30,26 +30,26 @@ CREATE TABLE Administrateur (
 );
 
 
-CREATE TABLE DS (
-    idDS SERIAL PRIMARY KEY,
-    anneeDS INTEGER NOT NULL,
-    semestreDS VARCHAR(8) NOT NULL CHECK (semestreDS IN ('PAIR', 'IMPAIR')),
-    dateDS DATE NOT NULL,
-    heureDS TIME NOT NULL,
-    dureeDS INTEGER NOT NULL,
-    ressourceDS VARCHAR(50) NOT NULL,
-    typeDS VARCHAR(8) NOT NULL CHECK (typeDS IN ('ORAL', 'PAPIER', 'MACHINE'))
+CREATE TABLE ds (
+    id_ds SERIAL PRIMARY KEY,
+    annee_ds INTEGER NOT NULL,
+    semestre_ds VARCHAR(8) NOT NULL CHECK (semestre_ds IN ('PAIR', 'IMPAIR')),
+    date_ds DATE NOT NULL,
+    heure_ds TIME NOT NULL,
+    duree_ds INTEGER NOT NULL,
+    ressource_ds VARCHAR(50) NOT NULL,
+    type_ds VARCHAR(8) NOT NULL CHECK (type_ds IN ('ORAL', 'PAPIER', 'MACHINE'))
 );
 
 
-CREATE TABLE Rattrapage (
-    idRattrapage SERIAL PRIMARY KEY,
-    idDS INTEGER NOT NULL,
-    dateRattrapage DATE NOT NULL,
-    horaireRattrapage TIME NOT NULL,
-    salleRattrapage VARCHAR(3) NOT NULL,
-    etatRattrapage VARCHAR(15) NOT NULL CHECK (etatRattrapage IN ('EN COURS', 'PROGRAMME', 'NEUTRALISE')),
-    FOREIGN KEY (idDS) REFERENCES DS(idDS)
+CREATE TABLE rattrapage (
+    id_rattrapage SERIAL PRIMARY KEY,
+    id_ds INTEGER NOT NULL,
+    date_rattrapage DATE NOT NULL,
+    horaire_rattrapage TIME NOT NULL,
+    salle_rattrapage VARCHAR(3) NOT NULL,
+    etat_rattrapage VARCHAR(15) NOT NULL CHECK (etat_rattrapage IN ('EN COURS', 'PROGRAMME', 'NEUTRALISE')),
+    FOREIGN KEY (id_ds) REFERENCES ds(id_ds)
 );
 
 
@@ -60,13 +60,13 @@ CREATE TABLE etudiant (
 );
 -- TODO: ajouter une colonne pour le mail d'étudiant
 
-CREATE TABLE Eligible (
-    idDS INTEGER NOT NULL,
-    idEtudiant INTEGER NOT NULL,
+CREATE TABLE eligible (
+    id_ds INTEGER NOT NULL,
+    id_etudiant INTEGER NOT NULL,
     justification BOOLEAN NOT NULL,
-    FOREIGN KEY (idDS) REFERENCES DS(idDS),
-    FOREIGN KEY (idEtudiant) REFERENCES Etudiant(idEtudiant),
-    PRIMARY KEY (idDS, idEtudiant)
+    FOREIGN KEY (id_ds) REFERENCES ds(id_ds),
+    FOREIGN KEY (id_etudiant) REFERENCES etudiant(id_etudiant),
+    PRIMARY KEY (id_ds, id_etudiant)
 );
 
-INSERT INTO Etudiant (nomEtudiant, prenomEtudiant) VALUES ('Rascoin', 'Gomain');
+INSERT INTO etudiant (nom_etudiant, prenom_etudiant) VALUES ('Rascoin', 'Gomain');

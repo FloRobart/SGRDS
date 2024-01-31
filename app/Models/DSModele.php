@@ -4,13 +4,13 @@ use CodeIgniter\Model;
 class DSModele extends Model {
 
     // nom de la table gérée par ce modèle
-    protected $table = 'DS';
+    protected $table = 'ds';
 
     // clé primaire de la table
-    protected $primaryKey = 'idDS';
+    protected $primaryKey = 'id_ds';
 
     // variables membres = colonnes de la table
-    protected $allowedFields = ['anneeDS', 'semestreDS', 'dateDS', 'heureDS', 'dureeDS', 'ressourceDS', 'typeDS', 'idEnseignant'];
+    protected $allowedFields = ['annee_ds', 'semestre_ds', 'date_ds', 'heure_ds', 'duree_ds', 'ressource_ds', 'type_ds'];
 
     // constructeur
     public function __construct()
@@ -25,31 +25,31 @@ class DSModele extends Model {
         if (!$this->db->tableExists($this->table))
         {
             $fields = [
-                'anneeDS' => [
+                'annee_ds' => [
                     'type' => 'INT',
                     'constraint' => 11,
                     'unsigned' => true,
                 ],
-                'semestreDS' => [
+                'semestre_ds' => [
                     'type' => 'VARCHAR',
                     'constraint' => 8,
                 ],
-                'dateDS' => [
+                'date_ds' => [
                     'type' => 'DATE',
                 ],
-                'heureDS' => [
+                'heure_ds' => [
                     'type' => 'TIME',
                 ],
-                'dureeDS' => [
+                'duree_ds' => [
                     'type' => 'INT',
                     'constraint' => 11,
                     'unsigned' => true,
                 ],
-                'ressourceDS' => [
+                'ressource_ds' => [
                     'type' => 'VARCHAR',
                     'constraint' => 100,
                 ],
-                'typeDS' => [
+                'type_ds' => [
                     'type' => 'VARCHAR',
                     'constraint' => 100,
                 ],
@@ -61,8 +61,7 @@ class DSModele extends Model {
             ];
 
             $this->forge->addField($fields);
-            $this->forge->addKey('idDS', TRUE); // clé primaire
-            $this->forge->addForeignKey('idEnseignant','Enseignant','idEnseignant'); // clé étrangère
+            $this->forge->addKey('id_ds', TRUE); // clé primaire
             $this->forge->createTable($this->table, TRUE);
         }
 
@@ -70,13 +69,13 @@ class DSModele extends Model {
         $this->db = \Config\Database::connect();
     }
 
-    // retourne la liste de tous les DS, triés par nom
+    // retourne la liste de tous les ds, triés par nom
     public function get_all()
     {
         return $this->orderBy('annee')->findAll();
     }
 
-    // ajoute un DS défini par un formulaire
+    // ajoute un ds défini par un formulaire
     public function ajout()
     {
         // TODO
