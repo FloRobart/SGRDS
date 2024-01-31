@@ -33,12 +33,14 @@ class Email extends BaseConfig
     /**
      * SMTP Username
      */
-    public string $SMTPUser = 'portgasd.ace491803@gmail.com';
+
+    public string $SMTPUser = 'notification.rattrapge@gmail.com';
 
     /**
      * SMTP Password
      */
-    public string $SMTPPass = 'fmau pevi gfgf zimb';
+
+    public string $SMTPPass = 'nvnz agcf xuax ovhn';
 
     /**
      * SMTP Port
@@ -48,7 +50,7 @@ class Email extends BaseConfig
     /**
      * SMTP Timeout (in seconds)
      */
-    public int $SMTPTimeout = 5;
+    public int $SMTPTimeout = 60;
 
     /**
      * Enable persistent SMTP connections

@@ -5,6 +5,7 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
+
 /* Pages d'inscriptions */
 $routes->get('/', 'AuthentificationController::inscription');
 $routes->get('inscription', 'AuthentificationController::inscription');
@@ -23,3 +24,8 @@ $routes->match(['get', 'post'], 'forgot_password/sendResetLink', 'Authentificati
 /* Pages de réinitialisation du mot de passe */
 $routes->get('reset_password/(:any)', 'AuthentificationController::reset/$1');
 $routes->match(['get', 'post'], 'updatePassword','AuthentificationController::updatePassword');
+
+$routes->get('/email/', 'EmailFormController::index');
+$routes->post('/email/send', 'EmailFormController::sendEmailsByButton');
+    
+
