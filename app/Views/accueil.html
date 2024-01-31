@@ -1,0 +1,80 @@
+<!--
+    Reste à faire :
+    - Pop-up avant suppression
+    - Filtres de recherches
+    - Séparation en plusieurs vues
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGRDS</title>
+    <!-- Import de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="px-3 py-2 text-bg-light border-bottom">
+          <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+              <a href="" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+                <h1 class="text-dark">SRGDS</h1>
+              </a>
+              <div class="text-end">
+                <button type="button" class="btn btn-primary">Connexion</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <section id="listeRattrapages" class="text-center my-3 mx-2">
+        <div class="container">
+            <h1>Liste des Rattrapages</h1>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Étudiant</th>
+                      <th scope="col">Ressource</th>
+                      <th scope="col">Semestre</th>
+                      <th scope="col">Justifié</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Section à loop -->
+                    <tr>
+                      <td>1</td> <!-- ID du Rattrapage, à voir si on le laisse ou pas -->
+                      <td>Esteban BREA HELL</td> <!-- Nom de l'étudiant -->
+                      <td>Communication</td> <!-- Ressource -->
+                      <td>6</td> <!-- Semestre -->
+                      <td>Non</td> <!-- Absence justifiée ? -->
+                      <td>
+                        <!-- Bouton d'édition du rattrapage, redirige vers les pages d'édition -->
+                        <button class="btn btn-primary rounded"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                            <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z"/>
+                          </svg>
+                        </button>
+                        <!-- Bouton de suppression, a afficher UNIQUEMENT en mode Directeur -->
+                        <button class="btn btn-warning rounded"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+                          </svg>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+        </div>
+      </section>
+    <div class="container">
+        <footer class="py-3 my-4">
+          <p class="text-center text-body-secondary border-top py-2">SGRDS 2024</p>
+        </footer>
+      </div>
+</body>
+</html>
