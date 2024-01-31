@@ -55,10 +55,10 @@ CREATE TABLE rattrapage (
 
 CREATE TABLE etudiant (
     id_etudiant SERIAL PRIMARY KEY,
+    mail_etudiant VARCHAR(50) NOT NULL,
     nom_etudiant VARCHAR(50) NOT NULL,
     prenom_etudiant VARCHAR(50) NOT NULL
 );
--- TODO: ajouter une colonne pour le mail d'étudiant
 
 CREATE TABLE eligible (
     id_ds INTEGER NOT NULL,
