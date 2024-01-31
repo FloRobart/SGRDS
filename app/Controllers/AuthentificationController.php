@@ -9,10 +9,21 @@ class AuthentificationController extends Controller
     {
         helper(['form', 'mail']);
         $session = session();
-        $session->set('isLoggedIn', FALSE);
     }
 
 
+    /**
+     * Permet d'afficher la page d'accueil
+     */
+    public function index()
+    {
+        return view('homeVue');
+    }
+
+    public function profile()
+    {
+        echo view('profileVue', session()->get());
+    }
 
     /*=============*/
     /* INSCRIPTION */
@@ -22,7 +33,7 @@ class AuthentificationController extends Controller
      */
     public function inscription()
     {
-        return view('forminscription', []);
+        return view('formInscriptionVue');
     }
 
     /**
@@ -64,7 +75,7 @@ class AuthentificationController extends Controller
      */
     public function connexion()
     {
-        echo view('formconnexion');
+        echo view('formConnexionVue');
     } 
 
     /**
@@ -228,6 +239,6 @@ class AuthentificationController extends Controller
         $session = session();
         $session->set('isLoggedIn', FALSE); // Définir la variable de session à false (déconnecté)
         $session->destroy();
-        return redirect()->to('/connexion');
+        return redirect()->to('/');
     }
 }

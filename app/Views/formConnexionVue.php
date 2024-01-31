@@ -21,18 +21,29 @@
           </div>
       <?php endif;?>
       <input type="email" name="email" id="email" placeholder="Email" value="<?= set_value('email'); ?>" class="my-2 py-1 w-sm-75"><br>
-      <input type="password" id="password" name="mdp_admin" placeholder="Mot de passe" class="my-2 py-1 w-sm-75 "><br>
+      <input type="password" id="password" name="mdp_admin" placeholder="Mot de passe" class="my-2 py-1 w-sm-75 ">
+      <i class="bi bi-eye-slash" id="togglePassword"></i><br />
       <div class="d-grid mb-3">
           <a href="#" id="forgotPasswordLink" class="btn btn-link">Mot de passe oublié ?</a>
       </div>
       <input type="submit" class="btn btn-primary my-2 py-1" value="Se connecter">
   </form>
   <script>
-      document.getElementById('forgotPasswordLink').addEventListener('click', function() {
-          var emailValue = document.getElementById('email').value;
-          var forgotPasswordUrl = "<?php echo base_url(); ?>forgot_password/sendResetLink?email=" + encodeURIComponent(emailValue);
-          window.location.href = forgotPasswordUrl;
+    document.getElementById('forgotPasswordLink').addEventListener('click', function() {
+      var emailValue = document.getElementById('email').value;
+      var forgotPasswordUrl = "<?php echo base_url(); ?>forgot_password/sendResetLink?email=" + encodeURIComponent(emailValue);
+      window.location.href = forgotPasswordUrl;
+    });
+
+    window.onload = function() {
+      const togglePassword = document.getElementById('togglePassword');
+      const password = document.getElementById('password');
+      togglePassword.addEventListener('click', () => {
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        togglePassword.classList.toggle('bi-eye');
       });
+    }
   </script>
 </div>
 <?php echo view('footer'); ?>
