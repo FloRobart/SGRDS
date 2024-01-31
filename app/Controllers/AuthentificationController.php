@@ -62,7 +62,7 @@ class AuthentificationController extends Controller
      */
     public function connexion()
     {
-        echo view('connexionVue');
+        echo view('formconnexion');
     } 
 
     /**
