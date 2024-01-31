@@ -99,7 +99,17 @@
                       <td scope="col"><input id="enseignant" onkeyup='playerSearch()' name="enseignant" placeholder="Enseignant"></td>
                       <td scope="col"></td>
                       <td scope="col">
-                        <div class="dropdown">
+                        <!-- Ici tu mets le onClick (ou autre truc d'event jsp frr) sur le tag select et tu check quelle option est selectionnée-->
+                        <select name="semestre" id="semestre">
+                          <option value="0">Semestre:</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                        </select>
+                        <!--<div class="dropdown">
                           <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Semestre
                           </button>
@@ -112,7 +122,7 @@
                             <li><a class="dropdown-item" href="#" onclick="playerSearch()">5</a></li>
                             <li><a class="dropdown-item" href="#" onclick="playerSearch()">6</a></li>
                           </ul>
-                        </div>
+                        </div>-->
                       </td>
                       <td scope="col"></td>
                     </tr>
