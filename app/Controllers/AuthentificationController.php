@@ -224,6 +224,7 @@ class AuthentificationController extends Controller
     public function deconnexion()
     {
         $session = session();
+        $session->set('isLoggedIn', FALSE); // Définir la variable de session à false (déconnecté)
         $session->destroy();
         return redirect()->to('connexion');
     }
