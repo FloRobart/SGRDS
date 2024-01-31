@@ -33,11 +33,13 @@ class Email extends BaseConfig
     /**
      * SMTP Username
      */
+
     public string $SMTPUser = 'notification.rattrapge@gmail.com';
 
     /**
      * SMTP Password
      */
+
     public string $SMTPPass = 'nvnz agcf xuax ovhn';
 
     /**
