@@ -1,9 +1,3 @@
-<!--
-   ATTENTION
-   CECI EST UNE BACKUP QUI SERVIRA A FAIRE LES VRAIES PAGES
-   A NE PAS METTRE EN PRODUCTION
-
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,25 +23,35 @@
           </div>
         </div>
       </header>
-      <section id="listeRattrapages" class="text-center my-3 mx-2 h-100">
+      <section id="listeRattrapagesProg" class="text-center my-3 mx-2 h-100">
         <div class="container">
-            <h1>Liste des Rattrapages</h1>
+            <h1>Liste des Rattrapages Programmés</h1>
             <div class="table-responsive pb-5 mb-5">
                 <table class="table table-striped mb-5 pb-5">
                   <thead>
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">Étudiant</th>
+                      <th scope="col">DS</th>
                       <th scope="col">Ressource</th>
                       <th scope="col">Enseignant</th>
                       <th scope="col">Année</th>
                       <th scope="col">Semestre</th>
-                      <th scope="col">Justifié</th>
                       <th scope="col">Action</th>
                     </tr>
                     <tr>
+                      <!--
+                        Cette section sert a rechercher les rattrapages selon les critères suivants :
+                         - L'intitulé du DS
+                         - La ressource
+                         - L'enseignant
+                         - Le semestre
+
+                         Le semestre fonctionne avec un dropdown mais il retient pas quel option est cliquée faudra implémenter ca en premier lieu (bonne chance mon bew)
+                         ensuite tu claques des filter() sur un tableau contenant tout les rattrapages selon le contenu des champs
+
+                      -->
                       <td scope="col"></td>
-                      <td scope="col"><input id="etudiant" name="etudiant" placeholder="Étudiant"></td>
+                      <td scope="col"><input id="ds" name="ds" placeholder="DS"></td>
                       <td scope="col"><input id="ressource" name="ressource" placeholder="Ressource"></td>
                       <td scope="col"><input id="enseignant" name="enseignant" placeholder="Enseignant"></td>
                       <td scope="col"></td>
@@ -67,43 +71,27 @@
                           </ul>
                         </div>
                       </td>
-                      <td scope="col" >
-                        <div class="dropdown">
-                          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Justifié?
-                          </button>
-                          <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Tout</a></li>
-                            <li><a class="dropdown-item" href="#">Oui</a></li>
-                            <li><a class="dropdown-item" href="#">Non</a></li>
-
-                          </ul>
-                        </div>
-                      </td>
-
+                      <td scope="col"></td>
                     </tr>
                   </thead>
                   <tbody>
                     <!-- Section à loop -->
                     <tr>
                       <td>1</td> <!-- ID du Rattrapage, à voir si on le laisse ou pas -->
-                      <td>Esteban BREA HELL</td> <!-- Nom de l'étudiant -->
+                      <td>Conduite du changement</td>
                       <td>Communication</td> <!-- Ressource -->
                       <td>Laurence NIVET</td>
                       <td>3</td>
                       <td>6</td> <!-- Semestre -->
-                      <td>Non</td> <!-- Absence justifiée ? -->
                       <td>
-                        <!-- Bouton d'édition du rattrapage, redirige vers les pages d'édition -->
-                        <button class="btn btn-primary rounded"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-                            <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z"/>
+                        <!-- Bouton d'information sur le rattrapage -->
+                        <button class="btn btn-primary rounded" data-bs-toggle="modal" data-bs-target="#modalInfo1">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                              <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
                           </svg>
                         </button>
-                        <!-- Bouton de suppression, a afficher UNIQUEMENT en mode Directeur -->
-                        <button class="btn btn-warning rounded"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
-                          </svg>
-                        </button>
+                        
+                        
                       </td>
                     </tr>
                   </tbody>
@@ -111,6 +99,29 @@
               </div>
         </div>
       </section>
+      <div class="modal fade" id="modalInfo1" tabindex="-1" aria-labelledby="infoRattrapage1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-left">
+              <p>Date : 11/09/2001</p>
+              <p>Heure : 17h27</p>
+              <p>Salle : 727</p>
+              <p>Étudiants concernés :</p>
+              <ul>
+                <li>Esteban BREA HELL</li>
+                <li>Gomain RASCOIN</li>
+              </ul> 
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            </div>
+          </div>
+        </div>
+      </div>
     <div class="container">
         <footer class="py-3 my-4">
           <p class="text-center text-body-secondary border-top py-2">SGRDS 2024</p>
