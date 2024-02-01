@@ -4,7 +4,7 @@
     <form action="<?php echo base_url(); ?>inscription/validationInscription" method="post" class="rounded border py-5 px-md-5 text-bg-white text-center">
         <h1>Inscrire un nouveau directeur des études</h1>
         <?php if(isset($validation)):?>
-            <div class="alert alert-warning">
+            <div class="alert alert-warning my-2 py-1 w-sm-75">
                 <?= $validation->listErrors() ?>
             </div>
         <?php endif;?>
