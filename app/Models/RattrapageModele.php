@@ -39,7 +39,7 @@ class RattrapageModele extends Model {
      */
     public function getAllEtudiantsByRattrapage($id_rattrapage)
     {
-        return $this->query('SELECT * FROM etudiant WHERE id_etudiant IN (SELECT id_etudiant FROM rattrapage_etudiant WHERE id_rattrapage = '.$id_rattrapage.')')->getResult();
+        return $this->query('SELECT * FROM etudiant WHERE id_etudiant IN (SELECT id_etudiant FROM eligible WHERE id_rattrapage = '.$id_rattrapage.')')->getResult();
     }
 
     /**
