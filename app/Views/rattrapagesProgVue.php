@@ -172,38 +172,41 @@ function test()
                   <tbody>
                     <!-- Section à loop -->
                     <tr>
-                      <script>
+                    <?php
+                      use App\Models\RattrapageModele;
+                      use App\Models\DSModele;
+                      // Récupérer les étudiants
+                      $model_Rattrapage = new RattrapageModele();
+                      $rattrapges = $model_Rattrapage->getAllRattrapagesByType("PROGRAMME");
 
-                        fetch('https://api.example.com/data', {
-                          method: 'GET',
-                        })
-                        .then(response => response.json()) // or .text() for text data.
-                        .then(data => {
-                          console.log(data);
-                        })
-                        .catch((error) => {
-                          console.error('Error:', error);
-                        });
-                        //boucle pour crée les rattraptage (j'en veux 10)
-                        for (let i = 0; i < 10; i++) {
-                          document.write("<tr>");
-                          document.write("<td>" + (i +1)+"</td>"); // ID du Rattrapage, à voir si on le laisse ou pas
-                          document.write("<td>Conduite du changement" + i + "</td>");
-                          document.write("<td>Communication"+ (i+2) +"</td>"); // Ressource
-                          document.write("<td>Laurence NIVET" +( i +1)+ "</td>");
-                          document.write("<td>" + (i-1) + "</td>");
-                          document.write("<td>" + i+"</td>"); // Semestre
-                          document.write("<td>");
-                          // Bouton d'information sur le rattrapage
-                          document.write('<button class="btn btn-primary rounded" data-bs-toggle="modal" data-bs-target="#modalInfo'+(i+1)+'">');
-                          document.write('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">');
-                          document.write('<path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>');
-                          document.write('</svg>');
-                          document.write('</button>');
-                          document.write("</td>");
-                          document.write("</tr>");
-                        }
-                      </script>
+                      $model_DS = new DSModele();
+                      $ds = $model_DS->getAllDS();
+                      $ds = array_column($ds, null, 'id_ds'); // Transform $ds into an associative array with 'id_ds' as keys
+
+
+                    
+
+                      foreach ($rattrapges as $rattrapge) {
+                        echo"<tr>";
+                        echo"<td>".$rattrapge['id_ds']."</td>";
+                        echo"<td>".$ds[$rattrapge['id_ds']]['ressource_ds']."</td>";
+                        echo"<td>".$ds[$rattrapge['id_ds']]['ressource_ds']."</td>";
+                        echo"<td>".$rattrapge['enseignant_rattrapage']."</td>";
+                        echo"<td>".ceil($ds[$rattrapge['id_ds']]['semestre_ds']/2)."</td>";
+
+                        echo"<td>".($ds[$rattrapge['id_ds']]['semestre_ds'])."</td>";
+                        echo"<td>";
+                        echo'<button class="btn btn-primary rounded" data-bs-toggle="modal" data-bs-target="#modalInfo"'.$rattrapge['id_ds'].'>';
+                        echo'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">';
+                        echo'<path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>';
+                        echo'</svg>';
+                        echo'</button>';
+                        echo"</td>";
+                        echo"</tr>";  
+                      
+                      }
+                      ?>
+
                       <!-- <td>1</td> 
                       <td>Conduite du changement</td>
                       <td>Communication</td> 
@@ -226,35 +229,74 @@ function test()
               </div>
         </div>
       </section>
-      <Script>
-        //i want 10 more modal
-        for (let i = 0; i < 10; i++) {
-          document.write('<div class="modal fade" id="modalInfo'+(i+1)+'" tabindex="-1" aria-labelledby="infoRattrapage'+(i+1)+'" aria-hidden="true">');
-          document.write('<div class="modal-dialog">');
-          document.write('<div class="modal-content">');
-          document.write('<div class="modal-header">');
-          document.write('<h1 class="modal-title fs-5" id="exampleModalLabel">Rattrape</h1>');
-          document.write('<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>');
-          document.write('</div>');
-          document.write('<div class="modal-body text-left">');
-          document.write('<p>Date : 11/09/2001</p>');
-          document.write('<p>Heure : 17h27</p>');
-          document.write('<p>Salle : 727</p>');
-          document.write('<p>Étudiants concernés :</p>');
-          document.write('<ul>');
-          document.write('<li>Esteban BREA HELL</li>');
-          document.write('<li>Gomain RASCOIN</li>');
-          document.write('</ul>');
-          document.write('</div>');
-          document.write('<div class="modal-footer">');
-          document.write('<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>');
-          document.write('</div>');
-          document.write('</div>');
-          document.write('</div>');
-          document.write('</div>');
-        }
-      </Script>
-      <!-- <div class="modal fade" id="modalInfo1" tabindex="-1" aria-labelledby="infoRattrapage1" aria-hidden="true">
+
+      <?php
+
+            $model_Rattrapage = new RattrapageModele();
+            $rattrapges = $model_Rattrapage->getAllRattrapagesByType("PROGRAMME");
+
+            $model_DS = new DSModele();
+            $ds = $model_DS->getAllDS();
+            $ds = array_column($ds, null, 'id_ds'); // Transform $ds into an associative array with 'id_ds' as keys
+
+            foreach ($rattrapges as $rattrapge) {
+              echo'<div class="modal fade" id="modalInfo"'.$rattrapge['id_ds'].' tabindex="-1" aria-labelledby="infoRattrapage"'.$rattrapge['id_ds'].' aria-hidden="true">';
+              echo'<div class="modal-dialog">';
+              echo'<div class="modal-content">';
+              echo'<div class="modal-header">';
+              echo'<h1 class="modal-title fs-5" id="exampleModalLabel">Rattrape</h1>';
+              echo'<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>';
+              echo'</div>';
+              echo'<div class="modal-body text-left">';
+              echo'<p>Date : '.$rattrapge['date_rattrapage'].'</p>';
+              echo'<p>Heure : '.$rattrapge['horaire_rattrapage'].'</p>';
+              echo'<p>Salle : '.$rattrapge['salle_rattrapage'].'</p>';
+              echo'<p>Étudiants concernés :</p>';
+              echo'<ul>';
+              echo'<li>Esteban BREA HELL</li>';
+              echo'<li>Gomain RASCOIN</li>';
+              echo'</ul>';
+              echo'</div>';
+              echo'<div class="modal-footer">';
+              echo'<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>';
+              echo'</div>';
+              echo'</div>';
+              echo'</div>';
+              echo'</div>';
+            }
+
+      
+
+                    
+
+        //for (let i = 0; i < 10; i++) {
+        //   document.write('<div class="modal fade" id="modalInfo'+(i+1)+'" tabindex="-1" aria-labelledby="infoRattrapage'+(i+1)+'" aria-hidden="true">');
+        //   document.write('<div class="modal-dialog">');
+        //   document.write('<div class="modal-content">');
+        //   document.write('<div class="modal-header">');
+        //   document.write('<h1 class="modal-title fs-5" id="exampleModalLabel">Rattrape</h1>');
+        //   document.write('<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>');
+        //   document.write('</div>');
+        //   document.write('<div class="modal-body text-left">');
+        //   document.write('<p>Date : 11/09/2001</p>');
+        //   document.write('<p>Heure : 17h27</p>');
+        //   document.write('<p>Salle : 727</p>');
+        //   document.write('<p>Étudiants concernés :</p>');
+        //   document.write('<ul>');
+        //   document.write('<li>Esteban BREA HELL</li>');
+        //   document.write('<li>Gomain RASCOIN</li>');
+        //   document.write('</ul>');
+        //   document.write('</div>');
+        //   document.write('<div class="modal-footer">');
+        //   document.write('<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>');
+        //   document.write('</div>');
+        //   document.write('</div>');
+        //   document.write('</div>');
+        //   document.write('</div>');
+        // 
+        
+      ?>
+      <div class="modal fade" id="modalInfo1" tabindex="-1" aria-labelledby="infoRattrapage1" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
