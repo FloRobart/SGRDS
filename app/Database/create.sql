@@ -48,6 +48,7 @@ CREATE TABLE rattrapage (
     horaire_rattrapage TIME NOT NULL,
     salle_rattrapage VARCHAR(3) NOT NULL,
     etat_rattrapage VARCHAR(15) NOT NULL CHECK (etat_rattrapage IN ('EN COURS', 'PROGRAMME', 'NEUTRALISE')),
+    enseignant_rattrapage VARCHAR(50),
     FOREIGN KEY (id_ds) REFERENCES ds(id_ds)
 );
 
