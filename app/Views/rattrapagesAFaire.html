@@ -90,7 +90,7 @@
                         </svg>
                         </button>
                         <!-- Bouton d'édition du rattrapage pour le directeur, censé etre là que quand le directeur est connecté, ici j'ai mis les 2 pour faire les pop up -->
-                        <button class="btn btn-secondary rounded btnEdit" data-bs-toggle="modal" data-bs-target="#modalEdition">
+                        <button class="btn btn-secondary rounded btnEdit" data-bs-toggle="modal" data-bs-target="#modalEdition1">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
                           <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z"/>
                         </svg>
@@ -105,37 +105,7 @@
                         
                       </td>
                     </tr>
-                    <!-- TODO: Section à loop -->
-                    <tr>
-                      <td class="identifiantDS">2</td> <!-- ID du Rattrapage, à voir si on le laisse ou pas -->
-                      <td>Conduite du changement</td>
-                      <td>Communication</td> <!-- Ressource -->
-                      <td>Laurence NIVET</td>
-                      <td>3</td>
-                      <td>6</td> <!-- Semestre -->
-                      <td>
-                        <!-- Bouton d'édition du rattrapage, affiche une pop-up avec les formulaires -->
-                        <button class="btn btn-primary rounded btnProg" data-bs-toggle="modal" data-bs-target="#modalProgrammation">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-                          <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z"/>
-                        </svg>
-                        </button>
-                        <!-- Bouton d'édition du rattrapage pour le directeur, censé etre là que quand le directeur est connecté, ici j'ai mis les 2 pour faire les pop up -->
-                        <button class="btn btn-secondary rounded btnEdit" data-bs-toggle="modal" data-bs-target="#modalEdition">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-                          <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z"/>
-                        </svg>
-                        </button>
-                        <!-- Bouton de suppression, a afficher UNIQUEMENT en mode Directeur -->
-                        <button class="btn btn-warning rounded btnSuppr" data-bs-toggle="modal" data-bs-target="#modalSuppression">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
-                          </svg>
-                        </button>
-                        
-                        
-                      </td>
-                    </tr>
+                    
                   </tbody>
                 </table>
               </div>
@@ -175,17 +145,21 @@
             </div>
             <form action="" method="post">
             <div class="modal-body">
+              <!-- TODO: BIEN VERIFIER DANS LE BACK SI TOUT A BIEN ETE REMPLI
+                   JE METS PAS REQUIRED CAR ON PEUT COCHER LA CASE PAS DE RATTRAPAGE
+              -->
+              <input type="checkbox" id="nonRattrapable" class="me-2"><label>Pas de rattrapage ?</label><br>
               <input type="hidden" id="identifiantProg" name="identifiantProg" value="1">  
               <label>Date du rattrapage : </label>
-                <input type="date" id="date" name="date" class ="w-100 my-2" required><br>
+                <input type="date" id="date" name="date" class ="w-100 my-2"><br>
                 <label>Heure du rattrapage : </label>
-                <input type="time" id="heure" name="heure" min="08:00" max="18:00" class ="w-100 my-2" required /><br>
+                <input type="time" id="heure" name="heure" min="08:00" max="18:00" class ="w-100 my-2"/><br>
                 <label>Durée du rattrapage : </label>
-                <input type="time" id="duree" name="duree" min="00:30" max="04:00" class ="w-100 my-2" required /><br>
-                <input type="text" id="salle" name="salle" placeholder="Salle du rattrapage" class ="w-100 my-2" required/><br>
+                <input type="time" id="duree" name="duree" min="00:30" max="04:00" class ="w-100 my-2"/><br>
+                <input type="text" id="salle" name="salle" placeholder="Salle du rattrapage" class ="w-100 my-2"/><br>
 
                 <p>Étudiants absents :</p>
-                <ul>
+                <ul id="listeEtudiantsProg">
                   <li><p><input type="checkbox" class="mx-2">Esteban BREA HELL</p></li>
                   <li><p><input type="checkbox" class="mx-2">Gomain RASCOIN</p></li>
                 </ul>
@@ -193,47 +167,13 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-              <input type="submit" class="btn btn-primary" value="Confirmer">
+              <input type="submit" class="btn btn-primary" value="Programmer le DS">
             </div>
           </form>
           </div>
         </div>
       </div>
       
-
-      <!-- Modal d'édition du rattrapage POUR LE DIRECTEUR -->
-      <div class="modal fade" id="modalEdition" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="staticBackdropLabel">Éditer un rattrapage</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="" method="post">
-            <div class="modal-body">
-              <input type="hidden" id="identifiantEdit" name="identifiantEdit" value="1"> <!-- Modifier la value avec JS selon le bouton selectionné-->
-                <input id="intitule" name="intitule" placeholder="Intitulé du DS" class ="w-100 my-2" required><br>
-                <input type="text" id="ressource" name="ressource" placeholder="Ressource" class ="w-100 my-2" list="ressources" required/><br>
-                <input type="text" id="enseignant" name="enseignant" placeholder="Enseignant" class ="w-100 my-2" list="enseignants" required/><br>
-                <!-- TODO: Ici il faudrait faire en sorte de quand on saisit un étudiant et qu'on appuie sur  ca l'ajoute à la liste-->
-                <input type="text" id="etudiant" name="etudiant" placeholder="Ajouter un étudiant" class="w-75 my-2" list="etudiants">
-                <p class="btn btn-secondary my-2" onClick="">+</p><br>
-                <p>Étudiants absents :</p>
-                <ul>
-                  <!-- Je sais pas si j'ajoute une checkbox pour les étudiants justifiés ou si le dirlo ajoute que les absents justifiés-->
-                  <li><p>Esteban BREA HELL<a class="mx-2 btn btn-secondary">X</a></p></li>
-                  <li><p>Gomain RASCOIN<a class="mx-2 btn btn-secondary">X</a></p></li>
-                </ul>
-              
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-              <input type="submit" class="btn btn-primary" value="Confirmer">
-            </div>
-          </form>
-          </div>
-        </div>
-      </div>
 
       <!-- Modal de création d'un rattrapage POUR LE DIRECTEUR -->
       <div class="modal fade" id="modalCreation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -249,13 +189,48 @@
                 <input type="text" id="ressource" name="ressource" placeholder="Ressource" class ="w-100 my-2" list="ressources" required/><br>
                 <input type="text" id="enseignant" name="enseignant" placeholder="Enseignant" class ="w-100 my-2" list="enseignants" required/><br>
                 <!-- TODO: Ici il faudrait faire en sorte de quand on saisit un étudiant et qu'on appuie sur  ca l'ajoute à la liste-->
-                <input type="text" id="etudiant" name="etudiant" placeholder="Ajouter un étudiant" class="w-75 my-2" list="etudiants">
-                <p class="btn btn-secondary my-2" onClick="">+</p><br>
+                <input type="text" id="etudiantAdd" name="etudiant" placeholder="Ajouter un étudiant" class="w-75 my-2" list="etudiants">
+                <p class="btn btn-secondary my-2" id="btnAddStudent">+</p><br>
                 <p>Étudiants absents :</p>
-                <ul>
-                  <!-- Je sais pas si j'ajoute une checkbox pour les étudiants justifiés ou si le dirlo ajoute que les absents justifiés-->
-                  <li><p>Esteban BREA HELL<a class="mx-2 btn btn-secondary">X</a></p></li>
-                  <li><p>Gomain RASCOIN<a class="mx-2 btn btn-secondary">X</a></p></li>
+                <ul class="listeEtudiants">
+
+                </ul>
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary btnClear" data-bs-dismiss="modal">Annuler</button>
+              <input type="submit" class="btn btn-primary" value="Confirmer">
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal d'édition du rattrapage POUR LE DIRECTEUR -->
+      <div class="modal fade" id="modalEdition1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Éditer un rattrapage</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="post">
+            <div class="modal-body">
+              <input type="hidden" id="identifiantEdit" name="identifiantEdit" value="1"> <!-- Modifier la value avec JS selon le bouton selectionné-->
+                <input id="intituleEdit" name="intitule" placeholder="Intitulé du DS" class ="w-100 my-2" required><br>
+                <input type="text" id="ressourceEdit" name="ressource" placeholder="Ressource" class ="w-100 my-2" list="ressources" required/><br>
+                <input type="text" id="enseignantEdit" name="enseignant" placeholder="Enseignant" class ="w-100 my-2" list="enseignants" required/><br>
+                <label>Type de DS : </label>
+                <select id="typeDSEdit">
+                  <option id="papierEdit">Papier</option>
+                  <option id="machineEdit">Machine</option>
+                  <option id="oralEdit">Oral</option>
+                </select><br>
+                <!-- TODO: Ici il faudrait faire en sorte de quand on saisit un étudiant et qu'on appuie sur  ca l'ajoute à la liste-->
+                <input type="text" id="etudiantEdit" name="etudiant" placeholder="Ajouter un étudiant" class="w-75 my-2" list="etudiants">
+                <p class="btn btn-secondary my-2" id="btnAddStudentEdit">+</p><br>
+                <p>Étudiants absents :</p>
+                <ul id="listeEtudiantsEdit">
                 </ul>
               
             </div>
@@ -287,38 +262,191 @@
       </datalist>
 
       <datalist id="etudiants">
-        <option>Esteban BREA HELL</option>
-        <option>Gomain RASCOIN</option>
+        <option value="Esteban BREA HELL">Esteban BREA HELL</option>
+        <option value="Gomain RASCOIN">Gomain RASCOIN</option>
       </datalist>
 
-
+      <!-- JS -->
       <script type="text/javascript">
+        //IL FAUT METTRE EN DUR LES ETUDIANTS DES RATTRAPAGES COMME CI DESSOUS
+        let infosRattrapage = [{id : 1, intitule: "Conduite du changement", ressource: "Communication", enseignant : "Laurence NIVET", type : "Papier", etudiants : ["Esteban BREA HELL"]}];
+        
         function setFormID(formID, id) {
           document.getElementById(formID).setAttribute("value", id.toString());
         }
+
+        function getRattrapageById(id) {
+          for (let rat of infosRattrapage) {
+            console.log(rat);
+            if (rat.id == id) return rat;
+          }
+          return null;
+        }
+
+        function is_valid_datalist_value(idDataList, inputValue) {
+          var option = document.querySelector("#" + idDataList + " option[value='" + inputValue + "']");
+          if (option != null) {
+            return option.value.length > 0;
+          }
+          return false;
+        }
+
+        function clearStudents(list) {
+          list.innerHTML = "";
+        }
+
+        function addStudent()    {
+          let input = document.getElementById("etudiantAdd");
+
+          if (!is_valid_datalist_value("etudiants", input.value)) {alert("Étudiant invalide");return;}
+
+          let list = document.getElementById("listeEtudiants");
+          let listElements = list.getElementsByTagName("li");
+
+          for (let elt of listElements) {
+            if (elt.textContent.includes(input.value)) {alert(input.value + " a déjà été mis absent pour ce DS"); return;}
+          }
+
+          var li = document.createElement("li");
+          li.appendChild(document.createTextNode(input.value));
+
+          var dataForBackend = document.createElement("input");
+          dataForBackend.setAttribute("type", "hidden");
+          dataForBackend.setAttribute("value", input.value);
+          dataForBackend.setAttribute("name", "etudiants[]");
+
+          var removeButton = document.createElement("a");
+          removeButton.appendChild(document.createTextNode("x"));
+          removeButton.setAttribute("class", "btn btn-secondary mx-3");
+
+          removeButton.addEventListener("click", function() {removeStudent(removeButton)});
+
+          li.appendChild(removeButton);
+          li.appendChild(dataForBackend);
+          list.appendChild(li);
+
+        }
+
+        function addEditStudent()    {
+          let input = document.getElementById("etudiantEdit");
+
+          if (!is_valid_datalist_value("etudiants", input.value)) {alert("Étudiant invalide");return;}
+
+          let list = document.getElementById("listeEtudiantsEdit");
+          let listElements = list.getElementsByTagName("li");
+
+          for (let elt of listElements) {
+            if (elt.textContent.includes(input.value)) {alert(input.value + " a déjà été mis absent pour ce DS"); return;}
+          }
+
+          var li = document.createElement("li");
+          li.appendChild(document.createTextNode(input.value));
+
+          var dataForBackend = document.createElement("input");
+          dataForBackend.setAttribute("type", "hidden");
+          dataForBackend.setAttribute("value", input.value);
+          dataForBackend.setAttribute("name", "etudiants[]");
+
+          var removeButton = document.createElement("a");
+          removeButton.appendChild(document.createTextNode("x"));
+          removeButton.setAttribute("class", "btn btn-secondary mx-3");
+
+          removeButton.addEventListener("click", function() {removeStudent(removeButton)});
+
+          li.appendChild(removeButton);
+          li.appendChild(dataForBackend);
+          list.appendChild(li);
+
+        }
+
+        function removeStudent(btn) {
+          btn.parentNode.remove();
+        }
+
+        function fillEditModal(id) {
+          clearStudents(document.getElementById("listeEtudiantsEdit"));
+
+          let rat = getRattrapageById(id);
+
+          document.getElementById("intituleEdit").setAttribute("value", rat.intitule);
+          document.getElementById("ressourceEdit").setAttribute("value", rat.ressource);
+          document.getElementById("enseignantEdit").setAttribute("value", rat.enseignant);
+          switch (rat.type) {
+            case "Papier" : document.getElementById("papierEdit").setAttribute("selected", "selected"); break;
+            case "Machine" : document.getElementById("machineEdit").setAttribute("selected", "selected"); break;
+            case "Oral" : document.getElementById("oralEdit").setAttribute("selected", "selected"); break;
+          }
+
+          let list = document.getElementById("listeEtudiantsEdit");
+          for (let stud of rat.etudiants) {
+            var li = document.createElement("li");
+            li.appendChild(document.createTextNode(stud));
+
+            var dataForBackend = document.createElement("input");
+            dataForBackend.setAttribute("type", "hidden");
+            dataForBackend.setAttribute("value", stud);
+            dataForBackend.setAttribute("name", "etudiants[]");
+
+            var removeButton = document.createElement("a");
+            removeButton.appendChild(document.createTextNode("x"));
+            removeButton.setAttribute("class", "btn btn-secondary mx-3");
+
+            removeButton.addEventListener("click", function() {removeStudent(removeButton)});
+
+            li.appendChild(removeButton);
+            li.appendChild(dataForBackend);
+            list.appendChild(li);
+          }
+        }
         
+        function fillProgModal(id) {
+          clearStudents(document.getElementById("listeEtudiantsProg"));
+
+          let rat = getRattrapageById(id);
+
+          let list = document.getElementById("listeEtudiantsProg");
+          for (let stud of rat.etudiants) {
+            var li = document.createElement("li");
+            
+            let cb = document.createElement("input");
+            cb.setAttribute("name", "etudiants[]");
+            cb.setAttribute("type", "checkbox");
+            cb.setAttribute("class", "me-2");
+            
+            li.appendChild(cb);
+            li.appendChild(document.createTextNode(stud));
+            list.appendChild(li);
+          }
+        }
+
         let btnProg = document.getElementsByClassName("btnProg");
         for (let btn of btnProg) {
           let id = btn.parentNode.parentNode.getElementsByClassName("identifiantDS")[0].textContent;
-          console.log(id);
-          btn.addEventListener("click", function(){ setFormID("identifiantProg", id)});
+          btn.addEventListener("click", function(){fillProgModal(id); setFormID("identifiantProg", id)});
         }
 
         let btnSuppr = document.getElementsByClassName("btnSuppr");
         for (let btn of btnSuppr) {
           let id = btn.parentNode.parentNode.getElementsByClassName("identifiantDS")[0].textContent;
-          console.log(id);
           btn.addEventListener("click", function(){ setFormID("identifiantSuppr", id)});
         }
-
-        
 
         let btnEdit = document.getElementsByClassName("btnEdit");
         for (let btn of btnEdit) {
           let id = btn.parentNode.parentNode.getElementsByClassName("identifiantDS")[0].textContent;
-          console.log(id);
-          btn.addEventListener("click", function(){ setFormID("identifiantEdit", id)});
+          btn.addEventListener("click", function(){ fillEditModal(id); setFormID("identifiantEdit", id)});
         }
+
+        let btnClear = document.getElementsByClassName("btnClear");
+        for (let btn of btnClear) {
+          btn.addEventListener("click", function(){clearStudents(document.getElementById("listeEtudiants"))});
+        }
+
+        let btnAddStudent = document.getElementById("btnAddStudent");
+        btnAddStudent.addEventListener("click", addStudent);
+
+        let btnAddStudentEdit = document.getElementById("btnAddStudentEdit");
+        btnAddStudentEdit.addEventListener("click", addEditStudent);
 
       
       </script>
