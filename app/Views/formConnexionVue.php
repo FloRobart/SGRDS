@@ -31,7 +31,7 @@
   <script>
     document.getElementById('forgotPasswordLink').addEventListener('click', function() {
       var emailValue = document.getElementById('email').value;
-      var forgotPasswordUrl = "<?php echo base_url(); ?>forgot_password/sendResetLink?email=" + encodeURIComponent(emailValue);
+      var forgotPasswordUrl = "<?php echo base_url(); ?>sendResetLink?email=" + encodeURIComponent(emailValue);
       window.location.href = forgotPasswordUrl;
     });
 

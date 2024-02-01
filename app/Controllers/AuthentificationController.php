@@ -56,7 +56,7 @@ class AuthentificationController extends Controller
             return redirect()->to('connexion');
         }else{
             $data['validation'] = $this->validator;
-            return view('inscriptionVue', $data);
+            return view('formInscriptionVue', $data);
         }
     }
 
@@ -148,7 +148,7 @@ class AuthentificationController extends Controller
             /* Paramètres du mail */
             $from ='portgasd.ace491803@gmail.com';
             $subject = 'réinitialisation de mot de passe';
-            $message = 'Cliquez sur le lien suivant pour réinitialiser MDP : ' . site_url("reset_password/$token");
+            $message = 'Cliquez sur le lien suivant pour réinitialiser MDP : ' . site_url("reset_password/$token?email=$emailTo");
 
             /* Utilisation de la classe email */
             $emailService = \Config\Services::email();
@@ -165,7 +165,7 @@ class AuthentificationController extends Controller
             }
             else
             {
-                echo $emailService->printDebugger();
+                echo $emailService->printDebuggerwhere();
             }
         }
         else
@@ -192,7 +192,7 @@ class AuthentificationController extends Controller
         if ($user) {
             return view('resetPasswordVue', ['token' => $token]);
         } else {
-            return 'Lien de réinitialisation non valide.';
+            return view('header') . '<h1 class="text-center">Lien de réinitialisation non valide.</h1><br /><br /><div class="row"><div class="col-md-8 offset-md-2 text-center"><a href="/" class="btn btn-primary text-center">Retour à la page d\'accueil</a></div></div>' . view('footer');
         }
     }
 
@@ -203,24 +203,29 @@ class AuthentificationController extends Controller
      */
     public function updatePassword()
     {
-        $token = $this->request->getPost('token');
-        $password = $this->request->getPost('nom_admin');
-        $confirmPassword = $this->request->getPost('confirm_password');
-        // Valider et traiter les données du formulaire
         $administrateurModel = new AdministrateurModel();
-        $user = $administrateurModel->where('reset_token', $token)
-        ->where('reset_token_expiration >', date('Y-m-d H:i:s'))
-        ->first();
-        if ($user && $password === $confirmPassword) {
-        // Mettre à jour le mot de passe et réinitialiser le jeton
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-        $administrateurModel->set('nom_admin', $hashedPassword)
-        ->set('reset_token', null)
-        ->set('reset_token_expiration', null)
-        ->update($user['id']);
-            return '<span>Mot de passe réinitialisé avec succès.</span><br /><input type="button" value="Retour à la page de connexion" onclick="window.location.href=\'connexion\'">';
-        } else {
-            return '<span>Erreur lors de la réinitialisation du mot de passe.</span><br /><input type="button" value="Retour à la page de connexion" onclick="window.location.href=\'connexion\'">';
+        $email = $this->request->getPost('email');
+        $user = $administrateurModel->where('email', $email)->first();
+        $token = $administrateurModel->select('reset_token')->where('email', $email)->first();
+        $tokenExpiration = $administrateurModel->select('reset_token_expiration')->where('email', $email)->first();
+
+        $password = $this->request->getPost('mdp_admin');
+        $confirmPassword = $this->request->getPost('confirme_mdp_admin');
+        // Valider et traiter les données du formulaire
+        if ($user && $password === $confirmPassword && $token && $tokenExpiration > date('Y-m-d H:i:s'))
+        {
+            // Mettre à jour le mot de passe et réinitialiser le jeton
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $administrateurModel->set('mdp_admin', $hashedPassword)
+            ->set('reset_token', null)
+            ->set('reset_token_expiration', null)
+            ->update($user['id']);
+
+            return '<span>Mot de passe réinitialisé avec succès.</span><br /><input type="button" value="Retour à la page de connexion" onclick="window.location.href=\'/connexion\'">';
+        }
+        else
+        {
+            return '<span>Erreur lors de la réinitialisation du mot de passe.</span><br /><input type="button" value="Retour à la page de connexion" onclick="window.location.href=\'/connexion\'">';
         }
     }
 
