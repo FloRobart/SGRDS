@@ -10,9 +10,6 @@
 
     <!-- Lien pour cacher/afficher le mot de passe -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
-
-    <!-- Lien pour le js du trie -->
-    <link rel="script" href="assets/js/Trie.js" />
 </head>
 <style>
     form i {

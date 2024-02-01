@@ -1,4 +1,97 @@
 <?php echo view('header'); ?>
+
+<script>
+  console.log("Trie.js");
+window.onload = function() {
+    
+    let ressource = document.getElementById("ressource");
+    let enseignant = document.getElementById("enseignant");
+
+    let ds = document.getElementById("ds");
+
+    let semestre = document.getElementById("semestre");
+
+    let année = document.getElementById("Année");
+    
+    
+
+    ressource.addEventListener("keyup", function() {
+        inputRessource = ressource.value.toUpperCase();
+        test();
+    });
+
+    enseignant.addEventListener("keyup", function() {
+        inputEnseignant = enseignant.value.toUpperCase();
+        test();
+    });
+
+    ds.addEventListener("keyup", function() {
+        inputDs = ds.value.toUpperCase();
+        test();
+    });
+
+    semestre.addEventListener("change", function() {
+        inputSemestre = semestre.value.toUpperCase();
+        test();
+    });
+
+    année.addEventListener("change", function() {
+        inputAnnée = année.value.toUpperCase();
+        test();
+    });
+
+
+}
+
+function test()
+{
+  let ressource = document.getElementById("ressource");
+    let enseignant = document.getElementById("enseignant");
+
+    let ds = document.getElementById("ds");
+
+    let semestre = document.getElementById("semestre");
+
+    let année = document.getElementById("Année");
+  let inputSemestre = (semestre != null ? semestre.value.toUpperCase() : null);
+  let inputRessource = (ressource != null ? ressource.value.toUpperCase() : null);
+  let inputEnseignant = (enseignant != null ? enseignant.value.toUpperCase() : null);
+  let inputDs = (ds != null ? ds.value.toUpperCase() : null);
+
+  let inputAnnée = (année != null ? année.value.toUpperCase() : null);
+  let rows = document.getElementsByTagName("tr");
+
+    if (inputRessource == null && inputRessource.length < 1  && inputDs == null && inputDs.length < 1 && inputEnseignant == null && inputEnseignant.length < 1 && (inputSemestre == null || inputSemestre == "" )&& inputSemestre.length < 1 && inputAnnée == null && inputAnnée.length < 1) {
+        // If input is empty, reset all rows to be visible and return
+        for (let i = 3; i < rows.length; i++) {
+            rows[i].style.display = "";
+        }
+        return;
+    }
+
+    for (let i = 3; i < rows.length; i++) {  
+        let row = rows[i];
+        let tdRessource = row.cells[2]; 
+        let tdDs = row.cells[1];
+        let tdEnseignant = row.cells[3]; 
+        let textEnseignant = tdEnseignant.textContent || tdEnseignant.innerHTML;
+        let textDs = tdDs.textContent || tdDs.innerHTML;
+        let textRessource = tdRessource.textContent || tdRessource.innerHTML;
+        let tdSemestre = row.cells[5]; 
+        let textSemestre = tdSemestre.textContent || tdSemestre.innerHTML;
+
+        let tdAnnée = row.cells[4];
+        let textAnnée = tdAnnée.textContent || tdAnnée.innerHTML;
+
+
+        if (textRessource.toUpperCase().indexOf(inputRessource) > -1 && textDs.toUpperCase().indexOf(inputDs) > -1 && textEnseignant.toUpperCase().indexOf(inputEnseignant) > -1 && textSemestre.toUpperCase().indexOf(inputSemestre) > -1 && textAnnée.toUpperCase().indexOf(inputAnnée) > -1){
+            row.style.display = "";
+        } else {
+            row.style.display = "none";
+        }
+    }
+}
+</script>
       <section id="listeRattrapagesProg" class="text-center my-3 mx-2 h-100">
         <div class="container">
             <h1>Liste des Rattrapages Programmés</h1>
@@ -27,11 +120,11 @@
 
                       -->
                       <td scope="col"></td>
-                      <td scope="col"><input id="ds" onkeyup='playerSearch()' name="ds" placeholder="DS"></td>
-                      <td scope="col"><input id="ressource" onkeyup='playerSearch()' name="ressource" placeholder="Ressource"></td>
-                      <td scope="col"><input id="enseignant" onkeyup='playerSearch()' name="enseignant" placeholder="Enseignant"></td>
+                      <td scope="col"><input id="ds"  name="ds" placeholder="DS"></td>
+                      <td scope="col"><input id="ressource" name="ressource" placeholder="Ressource"></td>
+                      <td scope="col"><input id="enseignant"  name="enseignant" placeholder="Enseignant"></td>
                       <td scope="col">
-                        <select name="Année"onclick="playerSearch()" id="Année">
+                        <select name="Année" id="Année">
                           <option value="">Année:</option>
                           <option value="1">1</option>
                           <option value="2">2</option>
@@ -45,7 +138,7 @@
                       </td>
                       <td scope="col">
                         <!-- Ici tu mets le onClick (ou autre truc d'event jsp frr) sur le tag select et tu check quelle option est selectionnée-->
-                        <select name="semestre"onclick="playerSearch()" id="semestre">
+                        <select name="semestre" id="semestre">
                           <option value="">Semestre:</option>
                           <option value="1">1</option>
                           <option value="2">2</option>
@@ -80,6 +173,17 @@
                     <!-- Section à loop -->
                     <tr>
                       <script>
+
+                        fetch('https://api.example.com/data', {
+                          method: 'GET',
+                        })
+                        .then(response => response.json()) // or .text() for text data.
+                        .then(data => {
+                          console.log(data);
+                        })
+                        .catch((error) => {
+                          console.error('Error:', error);
+                        });
                         //boucle pour crée les rattraptage (j'en veux 10)
                         for (let i = 0; i < 10; i++) {
                           document.write("<tr>");
