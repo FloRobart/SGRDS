@@ -218,60 +218,57 @@ function test()
       </section>
 
       <?php
+        $model_Rattrapage = new RattrapageModele();
+        $rattrapges = $model_Rattrapage->getAllRattrapagesByType("PROGRAMME");
 
-            $model_Rattrapage = new RattrapageModele();
-            $rattrapges = $model_Rattrapage->getAllRattrapagesByType("PROGRAMME");
+        $model_DS = new DSModele();
+        $ds = $model_DS->getAllDS();
+        $ds = array_column($ds, null, 'id_ds'); // Transform $ds into an associative array with 'id_ds' as keys
+        $modele_etudiant = new EtudiantModele();
+        $model_eligible = new EligibleModele();
+        foreach ($rattrapges as $rattrapge) {
+            /* Récupération des données */
+            $eligible = $model_eligible->getEligibleByRattrapage($rattrapge['id_ds']);
 
-            $model_DS = new DSModele();
-            $ds = $model_DS->getAllDS();
-            $ds = array_column($ds, null, 'id_ds'); // Transform $ds into an associative array with 'id_ds' as keys
-            $modele_etudiant = new EtudiantModele();
-            $model_eligible = new EligibleModele();
+            /* Initialisation de la popup */
+            echo'<div class="modal fade" id="modalInfo'.$rattrapge['id_ds'].'" tabindex="-1" aria-labelledby="infoRattrapage'.$rattrapge['id_ds'].'" aria-hidden="true">';
+            echo'<div class="modal-dialog">';
+            echo'<div class="modal-content">';
 
-            
+            /* Header de la popup */
+            echo'<div class="modal-header">';
+            echo'<h1 class="modal-title fs-5" id="exampleModalLabel">Rattrapes</h1>';
+            echo'<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>'; // La petite croix pour fermer la popup
+            echo'</div>';
+            echo'<div class="modal-body text-left">';
 
-
-            foreach ($rattrapges as $rattrapge) {
-              $eligible = $model_eligible->getEligibleByRattrapage($rattrapge['id_ds']);
-              echo'<div class="modal fade" id="modalInfo'.$rattrapge['id_ds'].'" tabindex="-1" aria-labelledby="infoRattrapage'.$rattrapge['id_ds'].'" aria-hidden="true">';
-              echo'<div class="modal-dialog">';
-              echo'<div class="modal-content">';
-              echo'<div class="modal-header">';
-              echo'<h1 class="modal-title fs-5" id="exampleModalLabel">Rattrape</h1>';
-              echo'<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>';
-              echo'</div>';
-              echo'<div class="modal-body text-left">';
-              echo'<p>Date : '.$rattrapge['date_rattrapage'].'</p>';
-              echo'<p>Heure : '.$rattrapge['horaire_rattrapage'].'</p>';
-              echo'<p>Salle : '.$rattrapge['salle_rattrapage'].'</p>';
-              if ($ds[$rattrapge['id_ds']]['duree_ds']%60 >9){
-                echo'<p>Durée : '.intdiv($ds[$rattrapge['id_ds']]['duree_ds'],60).'h'.($ds[$rattrapge['id_ds']]['duree_ds']%60).'</p>';
-              }else{
-                echo'<p>Durée : '.intdiv($ds[$rattrapge['id_ds']]['duree_ds'],60).'h'.($ds[$rattrapge['id_ds']]['duree_ds']%60).'0'.'</p>';
-              }
-              
-              echo'<p>Étudiants concernés :</p>';
-              echo'<ul>';
-              foreach ($eligible as $etudiant) {
-                $etudiantConcerner = $modele_etudiant->getEtudiantById($etudiant['id_etudiant']);
-                echo'<li>'.$etudiantConcerner['nom_etudiant']. ' '. $etudiantConcerner['prenom_etudiant'].'</li>';
-              }
-              echo'</ul>';
-              echo'</div>';
-              echo'<div class="modal-footer">';
-              echo'<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>';
-              echo'</div>';
-              echo'</div>';
-              echo'</div>';
-              echo'</div>';
+            /* Informations */
+            echo'<p>Date : '.$rattrapge['date_rattrapage'].'</p>';
+            echo'<p>Heure : '.$rattrapge['horaire_rattrapage'].'</p>';
+            echo'<p>Salle : '.$rattrapge['salle_rattrapage'].'</p>';
+            if ($ds[$rattrapge['id_ds']]['duree_ds']%60 >9){
+              echo'<p>Durée : '.intdiv($ds[$rattrapge['id_ds']]['duree_ds'],60).'h'.($ds[$rattrapge['id_ds']]['duree_ds']%60).'</p>';
+            }else{
+              echo'<p>Durée : '.intdiv($ds[$rattrapge['id_ds']]['duree_ds'],60).'h'.($ds[$rattrapge['id_ds']]['duree_ds']%60).'0'.'</p>';
             }
+            
+            echo'<p>Étudiants concernés :</p>';
+            echo'<ul>';
+            foreach ($eligible as $etudiant) {
+              $etudiantConcerner = $modele_etudiant->getEtudiantById($etudiant['id_etudiant']);
+              echo'<li>'.$etudiantConcerner['nom_etudiant']. ' '. $etudiantConcerner['prenom_etudiant'].'</li>';
+            }
+            echo'</ul>';
+            echo'</div>';
 
-      
-
-                    
-
-
-        
+            /* Footer de la popup */
+            echo'<div class="modal-footer">';
+            echo'<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>';
+            echo'</div>';
+            echo'</div>';
+            echo'</div>';
+            echo'</div>';
+          }
       ?>
 
 
