@@ -35,15 +35,15 @@ INSERT INTO ds (semestre_ds, date_ds, heure_ds, duree_ds, ressource_ds, type_ds)
 
 
 -- insertion des tuples dans la table rattrapage
-INSERT INTO rattrapage (id_ds, date_rattrapage, horaire_rattrapage, salle_rattrapage, etat_rattrapage) VALUES (1, '2020-01-15', '09:30:00', '724', 'PROGRAMME');
-INSERT INTO rattrapage (id_ds, date_rattrapage, horaire_rattrapage, salle_rattrapage, etat_rattrapage) VALUES (2, '2019-11-15', '10:00:00', '619', 'PROGRAMME');
-INSERT INTO rattrapage (id_ds, date_rattrapage, horaire_rattrapage, salle_rattrapage, etat_rattrapage) VALUES (3, '2020-02-28', '14:00:00', '619', 'NEUTRALISE');
-INSERT INTO rattrapage (id_ds, date_rattrapage, horaire_rattrapage, salle_rattrapage, etat_rattrapage) VALUES (4, '2021-03-05', '09:30:00', '720', 'EN COURS');
-INSERT INTO rattrapage (id_ds, date_rattrapage, horaire_rattrapage, salle_rattrapage, etat_rattrapage) VALUES (5, '2021-10-05', '08:30:00', '712', 'PROGRAMME');
-INSERT INTO rattrapage (id_ds, date_rattrapage, horaire_rattrapage, salle_rattrapage, etat_rattrapage) VALUES (6, '2022-11-30', '08:15:00', '715', 'PROGRAMME');
-INSERT INTO rattrapage (id_ds, date_rattrapage, horaire_rattrapage, salle_rattrapage, etat_rattrapage) VALUES (7, '2022-11-30', '10:00:00', '621', 'NEUTRALISE');
-INSERT INTO rattrapage (id_ds, date_rattrapage, horaire_rattrapage, salle_rattrapage, etat_rattrapage) VALUES (8, '2021-10-04', '09:00:00', '621', 'EN COURS');
-INSERT INTO rattrapage (id_ds, date_rattrapage, horaire_rattrapage, salle_rattrapage, etat_rattrapage) VALUES (9, '2021-04-19', '14:30:00', '724', 'PROGRAMME');
+INSERT INTO rattrapage (id_ds, date_rattrapage, horaire_rattrapage, salle_rattrapage, etat_rattrapage, enseignant_rattrapage) VALUES (1, '2020-01-15', '09:30:00', '724', 'PROGRAMME', 'Philippe LE PIVERT');
+INSERT INTO rattrapage (id_ds, date_rattrapage, horaire_rattrapage, salle_rattrapage, etat_rattrapage, enseignant_rattrapage) VALUES (2, '2019-11-15', '10:00:00', '619', 'PROGRAMME', 'Laurence NIVET');
+INSERT INTO rattrapage (id_ds, date_rattrapage, horaire_rattrapage, salle_rattrapage, etat_rattrapage, enseignant_rattrapage) VALUES (3, '2020-02-28', '14:00:00', '619', 'NEUTRALISE', 'Philippe LE PIVERT');
+INSERT INTO rattrapage (id_ds, date_rattrapage, horaire_rattrapage, salle_rattrapage, etat_rattrapage, enseignant_rattrapage) VALUES (4, '2021-03-05', '09:30:00', '720', 'EN COURS', 'Laurence NIVET');
+INSERT INTO rattrapage (id_ds, date_rattrapage, horaire_rattrapage, salle_rattrapage, etat_rattrapage, enseignant_rattrapage) VALUES (5, '2021-10-05', '08:30:00', '712', 'PROGRAMME', 'Bruno SADEG');
+INSERT INTO rattrapage (id_ds, date_rattrapage, horaire_rattrapage, salle_rattrapage, etat_rattrapage, enseignant_rattrapage) VALUES (6, '2022-11-30', '08:15:00', '715', 'PROGRAMME', 'Quentin LAFFEACH');
+INSERT INTO rattrapage (id_ds, date_rattrapage, horaire_rattrapage, salle_rattrapage, etat_rattrapage, enseignant_rattrapage) VALUES (7, '2022-11-30', '10:00:00', '621', 'NEUTRALISE', 'Quentin LAFFEACH');
+INSERT INTO rattrapage (id_ds, date_rattrapage, horaire_rattrapage, salle_rattrapage, etat_rattrapage, enseignant_rattrapage) VALUES (8, '2021-10-04', '09:00:00', '621', 'EN COURS', 'Bruno SADEG');
+INSERT INTO rattrapage (id_ds, date_rattrapage, horaire_rattrapage, salle_rattrapage, etat_rattrapage, enseignant_rattrapage) VALUES (9, '2021-04-19', '14:30:00', '724', 'PROGRAMME', 'Philippe LE PIVERT');
 
 
 -- insertion des tuples dans la table eligible
