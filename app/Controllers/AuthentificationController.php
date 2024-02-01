@@ -8,9 +8,25 @@ class AuthentificationController extends Controller
     public function __construct()
     {
         helper(['form', 'mail']);
+        $session = session();
     }
 
 
+    /**
+     * Permet d'afficher la page d'accueil
+     */
+    public function index()
+    {
+        return view('homeVue');
+    }
+
+    /**
+     * Permet d'afficher la page de profil
+     */
+    public function profile()
+    {
+        echo view('profileVue', session()->get());
+    }
 
     /*=============*/
     /* INSCRIPTION */
@@ -20,7 +36,7 @@ class AuthentificationController extends Controller
      */
     public function inscription()
     {
-        return view('inscriptionVue', []);
+        return view('formInscriptionVue');
     }
 
     /**
@@ -40,8 +56,8 @@ class AuthentificationController extends Controller
         if($this->validate($rules)){
             $administrateurModel = new AdministrateurModel();
             $data = [
-                'nom_admin'     => $this->request->getVar('nom_admin'),
-                'email'    => $this->request->getVar('email'),
+                'nom_admin' => $this->request->getVar('nom_admin'),
+                'email'     => $this->request->getVar('email'),
                 'mdp_admin' => password_hash($this->request->getVar('mdp_admin'), PASSWORD_DEFAULT)
             ];
             $administrateurModel->save($data);
@@ -62,7 +78,7 @@ class AuthentificationController extends Controller
      */
     public function connexion()
     {
-        echo view('connexionVue');
+        echo view('formConnexionVue');
     } 
 
     /**
@@ -226,6 +242,6 @@ class AuthentificationController extends Controller
         $session = session();
         $session->set('isLoggedIn', FALSE); // Définir la variable de session à false (déconnecté)
         $session->destroy();
-        return redirect()->to('connexion');
+        return redirect()->to('/');
     }
 }

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGRDS</title>
+    <!-- Import de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="px-3 py-2 text-bg-light border-bottom">
+          <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+              <a href="" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+                <h1 class="text-dark">SRGDS</h1>
+              </a>
+              <div class="text-end">
+                <button type="button" class="btn btn-primary">Connexion</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <section id="listeRattrapagesProg" class="text-center my-3 mx-2 h-100">
+        <div class="container">
+            <h1>Rattrapages à Programmer</h1>
+            <div class="table-responsive pb-5 mb-5">
+                <table class="table table-striped mb-5 pb-5">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">DS</th>
+                      <th scope="col">Ressource</th>
+                      <th scope="col">Enseignant</th>
+                      <th scope="col">Année</th>
+                      <th scope="col">Semestre</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                    <tr>
+                      <!--
+                        Cette section sert a rechercher les rattrapages selon les critères suivants :
+                         - L'intitulé du DS
+                         - La ressource
+                         - L'enseignant
+                         - Le semestre
+
+                         Le semestre fonctionne avec un dropdown mais il retient pas quel option est cliquée faudra implémenter ca en premier lieu (bonne chance mon bew)
+                         ensuite tu claques des filter() sur un tableau contenant tout les rattrapages selon le contenu des champs
+
+                      -->
+                      <td scope="col"></td>
+                      <td scope="col"><input id="ds" name="ds" placeholder="DS"></td>
+                      <td scope="col"><input id="ressource" name="ressource" placeholder="Ressource"></td>
+                      <td scope="col"><input id="enseignant" name="enseignant" placeholder="Enseignant"></td>
+                      <td scope="col"></td>
+                      <td scope="col">
+                          <select name="semestre" id="semestre">
+                            <option value="0">Semestre:</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                          </select>
+                      </td>
+                      <td scope="col"></td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- TODO: Section à loop -->
+                    <tr>
+                      <td>1</td> <!-- ID du Rattrapage, à voir si on le laisse ou pas -->
+                      <td>Conduite du changement</td>
+                      <td>Communication</td> <!-- Ressource -->
+                      <td>Laurence NIVET</td>
+                      <td>3</td>
+                      <td>6</td> <!-- Semestre -->
+                      <td>
+                        <!-- Bouton d'édition du rattrapage, affiche une pop-up avec les formulaires -->
+                        <button class="btn btn-primary rounded" data-bs-toggle="modal" data-bs-target="#modalProgrammation">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                          <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z"/>
+                        </svg>
+                        </button>
+                        <!-- Bouton d'édition du rattrapage pour le directeur, censé etre là que quand le directeur est connecté, ici j'ai mis les 2 pour faire les pop up -->
+                        <button class="btn btn-secondary rounded" data-bs-toggle="modal" data-bs-target="#modalEdition">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                          <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z"/>
+                        </svg>
+                        </button>
+                        <!-- Bouton de suppression, a afficher UNIQUEMENT en mode Directeur -->
+                        <button class="btn btn-warning rounded" data-bs-toggle="modal" data-bs-target="#modalSuppression">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+                          </svg>
+                        </button>
+                        
+                        
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+        </div>
+      </section>
+      
+      <!-- Modal de suppression, dans l'idéal il faudrait en avoir qu'un pour tlm -->
+      <div class="modal fade" id="modalSuppression" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmer la suppression ?</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Êtes-vous sûr de vouloir supprimer ce rattrapage ?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+              <button type="button" class="btn btn-primary">Supprimer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal de programmation du rattrapage -->
+      <div class="modal fade" id="modalProgrammation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Programmer un rattrapage</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="post">
+            <div class="modal-body">
+                <label>Date du rattrapage : </label>
+                <input type="date" id="date" name="date" class ="w-100 my-2" required><br>
+                <label>Heure du rattrapage : </label>
+                <input type="time" id="heure" name="heure" min="08:00" max="18:00" class ="w-100 my-2" required /><br>
+                <label>Durée du rattrapage : </label>
+                <input type="time" id="duree" name="duree" min="00:30" max="04:00" class ="w-100 my-2" required /><br>
+                <input type="text" id="salle" name="salle" placeholder="Salle du rattrapage" class ="w-100 my-2" required/><br>
+
+                <p>Étudiants absents :</p>
+                <ul>
+                  <li><p><input type="checkbox" class="mx-2">Esteban BREA HELL</p></li>
+                  <li><p><input type="checkbox" class="mx-2">Gomain RASCOIN</p></li>
+                </ul>
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+              <input type="submit" class="btn btn-primary" value="Confirmer">
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+      
+
+      <!-- Modal d'édition du rattrapage POUR LE DIRECTEUR -->
+      <!-- A Réutiliser pour la création d'un nouveau DS -->
+      <div class="modal fade" id="modalEdition" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Éditer un rattrapage</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="post">
+            <div class="modal-body">
+              
+                <input id="intitule" name="intitule" placeholder="Intitulé du DS" class ="w-100 my-2" required><br>
+                <input type="text" id="ressource" name="ressource" placeholder="Ressource" class ="w-100 my-2" list="ressources" required/><br>
+                <input type="text" id="enseignant" name="enseignant" placeholder="Enseignant" class ="w-100 my-2" list="enseignants" required/><br>
+                <!-- TODO: Ici il faudrait faire en sorte de quand on saisit un étudiant et qu'on appuie sur  ca l'ajoute à la liste-->
+                <input type="text" id="etudiant" name="etudiant" placeholder="Ajouter un étudiant" class="w-75 my-2" list="etudiants">
+                <p class="btn btn-secondary my-2" onClick="">+</p><br>
+                <p>Étudiants absents :</p>
+                <ul>
+                  <!-- Je sais pas si j'ajoute une checkbox pour les étudiants justifiés ou si le dirlo ajoute que les absents justifiés-->
+                  <li><p>Esteban BREA HELL<a class="mx-2 btn btn-secondary">X</a></p></li>
+                  <li><p>Gomain RASCOIN<a class="mx-2 btn btn-secondary">X</a></p></li>
+                </ul>
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+              <input type="submit" class="btn btn-primary" value="Confirmer">
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+      
+
+    <div class="container">
+        <footer class="py-3 my-4">
+          <p class="text-center text-body-secondary border-top py-2">SGRDS 2024</p>
+        </footer>
+      </div>
+      <!-- Datalists -->
+      <!-- TODO: Il faudra mettre la liste des ressources, étudiants et enseignants ici pour les différents formulaires UNIQUEMENT EN MODE DIRECTEUR-->
+      <datalist id="ressources">
+        <option>R3.XX Communication</option>
+        <option>R3.XX Developpement</option>
+      </datalist>
+
+      <datalist id="enseignants">
+        <option>Laurence NIVET</option>
+        <option>Rodolphe CHARRIER</option>
+      </datalist>
+
+      <datalist id="etudiants">
+        <option>Esteban BREA HELL</option>
+        <option>Gomain RASCOIN</option>
+      </datalist>
+</body>
+</html>
