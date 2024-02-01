@@ -1,45 +1,4 @@
-<script>
-  function playerSearch() {
-      let ressource = document.getElementById("ressource");
-      let inputRessource = (ressource != null ? ressource.value.toUpperCase() : null);
-      let enseignant = document.getElementById("enseignant");
-      let inputEnseignant = (enseignant != null ? enseignant.value.toUpperCase() : null);
 
-      let ds = document.getElementById("ds");
-      let inputDs = (ds != null ? ds.value.toUpperCase() : null);
-
-      let semestre = document.getElementById("semestre");
-      let inputSemestre = (semestre != null ? semestre.value.toUpperCase() : null);
-      
-      console.log(inputSemestre);
-
-      let rows = document.getElementsByTagName("tr");
-
-      if (inputRessource == null && inputRessource.length < 1  && inputDs == null && inputDs.length < 1 && inputEnseignant == null && inputEnseignant.length < 1) {
-          // If input is empty, reset all rows to be visible and return
-          for (let i = 3; i < rows.length; i++) {
-              rows[i].style.display = "";
-          }
-          return;
-      }
-
-      for (let i = 3; i < rows.length; i++) {  
-          let row = rows[i];
-          let tdRessource = row.cells[2]; // Get the second cell (column) of the row
-          let tdDs = row.cells[1]; // Get the second cell (column) of the row
-          let tdEnseignant = row.cells[3]; // Get the second cell (column) of the row
-          let textEnseignant = tdEnseignant.textContent || tdEnseignant.innerHTML;
-          let textDs = tdDs.textContent || tdDs.innerHTML;
-          let textRessource = tdRessource.textContent || tdRessource.innerHTML;
-
-          if (textRessource.toUpperCase().indexOf(inputRessource) > -1 && textDs.toUpperCase().indexOf(inputDs) > -1 && textEnseignant.toUpperCase().indexOf(inputEnseignant) > -1){
-              row.style.display = "";
-          } else {
-              row.style.display = "none";
-          }
-      }
-  }
-</script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -97,9 +56,35 @@
                       <td scope="col"><input id="ds" onkeyup='playerSearch()' name="ds" placeholder="DS"></td>
                       <td scope="col"><input id="ressource" onkeyup='playerSearch()' name="ressource" placeholder="Ressource"></td>
                       <td scope="col"><input id="enseignant" onkeyup='playerSearch()' name="enseignant" placeholder="Enseignant"></td>
-                      <td scope="col"></td>
                       <td scope="col">
-                        <div class="dropdown">
+                        <select name="Année"onclick="playerSearch()" id="Année">
+                          <option value="">Année:</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                        </select>
+
+
+                      </td>
+                      <td scope="col">
+                        <!-- Ici tu mets le onClick (ou autre truc d'event jsp frr) sur le tag select et tu check quelle option est selectionnée-->
+                        <select name="semestre"onclick="playerSearch()" id="semestre">
+                          <option value="">Semestre:</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                        </select>
+                        
+                        
+
+                        
+                        <!--<div class="dropdown">
                           <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Semestre
                           </button>
@@ -112,7 +97,7 @@
                             <li><a class="dropdown-item" href="#" onclick="playerSearch()">5</a></li>
                             <li><a class="dropdown-item" href="#" onclick="playerSearch()">6</a></li>
                           </ul>
-                        </div>
+                        </div>-->
                       </td>
                       <td scope="col"></td>
                     </tr>
@@ -128,8 +113,8 @@
                           document.write("<td>Conduite du changement" + i + "</td>");
                           document.write("<td>Communication"+ (i+2) +"</td>"); // Ressource
                           document.write("<td>Laurence NIVET" +( i +1)+ "</td>");
-                          document.write("<td>3</td>");
-                          document.write("<td>6</td>"); // Semestre
+                          document.write("<td>" + (i-1) + "</td>");
+                          document.write("<td>" + i+"</td>"); // Semestre
                           document.write("<td>");
                           // Bouton d'information sur le rattrapage
                           document.write('<button class="btn btn-primary rounded" data-bs-toggle="modal" data-bs-target="#modalInfo'+(i+1)+'">');
