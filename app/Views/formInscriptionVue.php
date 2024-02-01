@@ -1,5 +1,5 @@
 <?php echo view('header'); ?>
-<?php if(!session()->get('isLoggedIn')): ?>
+<?php if(session()->get('isLoggedIn')): ?>
     <div class="container py-5 px-md-5 text-bg-light w-75 w-md-50  ">
     <form action="<?php echo base_url(); ?>inscription/validationInscription" method="post" class="rounded border py-5 px-md-5 text-bg-white text-center">
         <h1>Inscrire un nouveau directeur des études</h1>
