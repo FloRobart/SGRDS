@@ -12,7 +12,8 @@ class RattrapageModele extends Model {
         'date_rattrapage',
         'horaire_rattrapage',
         'salle_rattrapage',
-        'etat_rattrapage'
+        'etat_rattrapage',
+        'enseignant_rattrapage'
     ];
 
     /**
@@ -39,5 +40,25 @@ class RattrapageModele extends Model {
     public function getAllEtudiantsByRattrapage($id_rattrapage)
     {
         return $this->query('SELECT * FROM etudiant WHERE id_etudiant IN (SELECT id_etudiant FROM rattrapage_etudiant WHERE id_rattrapage = '.$id_rattrapage.')')->getResult();
+    }
+
+    /**
+     * modifie le rattapage correspondant
+     * @param $id_rattrapage
+     * @param $date_rattrapage
+     * @param $horaire_rattrapage
+     * @param $salle_rattrapage
+     * @param $etat_rattrapage
+     * @param $enseignant_rattrapage
+     */
+    public function updateRattrapage($id_rattrapage, $date_rattrapage, $horaire_rattrapage, $salle_rattrapage, $etat_rattrapage, $enseignant_rattrapage)
+    {
+        $this->where('id_rattrapage', $id_rattrapage)->set([
+            'date_rattrapage' => $date_rattrapage,
+            'horaire_rattrapage' => $horaire_rattrapage,
+            'salle_rattrapage' => $salle_rattrapage,
+            'etat_rattrapage' => $etat_rattrapage,
+            'enseignant_rattrapage' => $enseignant_rattrapage
+        ])->update();
     }
 }
