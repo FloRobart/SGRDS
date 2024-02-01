@@ -92,3 +92,6 @@ INSERT INTO eligible (id_etudiant, id_rattrapage, justification) VALUES (2, 9, t
 INSERT INTO eligible (id_etudiant, id_rattrapage, justification) VALUES (3, 9, false);
 INSERT INTO eligible (id_etudiant, id_rattrapage, justification) VALUES (4, 9, true);
 INSERT INTO eligible (id_etudiant, id_rattrapage, justification) VALUES (5, 9, true);
+
+-- insertion des tuples dans la table administrateur
+INSERT INTO administrateur (nom_admin, email, mdp_admin) VALUES ('AdminTest', 'portgasd.ace491803@gmail.com', 'test');
