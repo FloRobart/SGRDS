@@ -31,4 +31,13 @@ class RattrapageModele extends Model {
     {
         return $this->where('etat_rattrapage', $type)->orderBy('date_rattrapage', 'ASC')->findAll();
     }
+
+    /**
+     * retourne tous les étudiants concernés par le rattrapage correspondant
+     * @param $id_rattrapage
+     */
+    public function getAllEtudiantsByRattrapage($id_rattrapage)
+    {
+        return $this->query('SELECT * FROM etudiant WHERE id_etudiant IN (SELECT id_etudiant FROM rattrapage_etudiant WHERE id_rattrapage = '.$id_rattrapage.')')->getResult();
+    }
 }
