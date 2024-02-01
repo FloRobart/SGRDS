@@ -6,7 +6,7 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 /* Accueil */
-$routes->get('/', 'AuthentificationController::index');
+$routes->get('/', 'RattrapagesController::index');
 
 /* Pages d'inscriptions */
 $routes->get('inscription', 'AuthentificationController::inscription');
@@ -31,6 +31,11 @@ $routes->post('email/send', 'EmailFormController::sendEmailsByButton');
 
 /* Déconnexion */
 $routes->get('deconnexion', 'AuthentificationController::deconnexion');
+
+/* Gestions des rattrapages */
+$routes->get('rattrapages_a_faire', 'RattrapagesController::rattrapagesAFaire');
+$routes->get('rattrapages_prog', 'RattrapagesController::rattrapagesProg');
+$routes->get('details_rattrapage', 'RattrapagesController::detailsRattrapage');
 
 /* Test sur les étudiants (pour la bado) */
 $routes->get('etudiants', 'EtudiantControleur::index');
