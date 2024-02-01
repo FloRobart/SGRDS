@@ -70,7 +70,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <!-- Section à loop -->
+                    <!-- TODO: Section à loop -->
                     <tr>
                       <td>1</td> <!-- ID du Rattrapage, à voir si on le laisse ou pas -->
                       <td>Conduite du changement</td>
@@ -176,6 +176,7 @@
                 <input id="intitule" name="intitule" placeholder="Intitulé du DS" class ="w-100 my-2" required><br>
                 <input type="text" id="ressource" name="ressource" placeholder="Ressource" class ="w-100 my-2" list="ressources" required/><br>
                 <input type="text" id="enseignant" name="enseignant" placeholder="Enseignant" class ="w-100 my-2" list="enseignants" required/><br>
+                <!-- TODO: Ici il faudrait faire en sorte de quand on saisit un étudiant et qu'on appuie sur  ca l'ajoute à la liste-->
                 <input type="text" id="etudiant" name="etudiant" placeholder="Ajouter un étudiant" class="w-75 my-2" list="etudiants">
                 <p class="btn btn-secondary my-2" onClick="">+</p><br>
                 <p>Étudiants absents :</p>
@@ -202,6 +203,7 @@
         </footer>
       </div>
       <!-- Datalists -->
+      <!-- TODO: Il faudra mettre la liste des ressources, étudiants et enseignants ici pour les différents formulaires UNIQUEMENT EN MODE DIRECTEUR-->
       <datalist id="ressources">
         <option>R3.XX Communication</option>
         <option>R3.XX Developpement</option>
