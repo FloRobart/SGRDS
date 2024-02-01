@@ -15,11 +15,11 @@ DELETE FROM ds;
 DELETE FROM etudiant;
 
 -- insertion des tuples dans la table etudiant
-INSERT INTO etudiant (mail_etudiant, nom_etudiant, prenom_etudiant) VALUES ('gomain.rascoin@vmail.bom','Rascoin', 'Gomain');
-INSERT INTO etudiant (mail_etudiant, nom_etudiant, prenom_etudiant) VALUES ('boris.flobart@coldmail.fr','Flobart', 'Boris');
-INSERT INTO etudiant (mail_etudiant, nom_etudiant, prenom_etudiant) VALUES ('plorian.ficele@mozarella.fom','Ficele', 'Plorian');
-INSERT INTO etudiant (mail_etudiant, nom_etudiant, prenom_etudiant) VALUES ('alexandre.michel@estunmmorpgautourpartour.com','Michel', 'Alexandre');
-INSERT INTO etudiant (mail_etudiant, nom_etudiant, prenom_etudiant) VALUES ('bzzzzteban.laruche@gmiel.fr','Laruche', 'Bzzzzteban');
+INSERT INTO etudiant (mail_etudiant, nom_etudiant, prenom_etudiant, annee_etudiant) VALUES ('gomain.rascoin@vmail.bom','Rascoin', 'Gomain', 1);
+INSERT INTO etudiant (mail_etudiant, nom_etudiant, prenom_etudiant, annee_etudiant) VALUES ('boris.flobart@coldmail.fr','Flobart', 'Boris', 3);
+INSERT INTO etudiant (mail_etudiant, nom_etudiant, prenom_etudiant, annee_etudiant) VALUES ('plorian.ficele@mozarella.fom','Ficele', 'Plorian', 2);
+INSERT INTO etudiant (mail_etudiant, nom_etudiant, prenom_etudiant, annee_etudiant) VALUES ('alexandre.michel@estunmmorpgautourpartour.com','Michel', 'Alexandre', 2);
+INSERT INTO etudiant (mail_etudiant, nom_etudiant, prenom_etudiant, annee_etudiant) VALUES ('bzzzzteban.laruche@gmiel.fr','Laruche', 'Bzzzzteban', 3);
 
 
 -- insertion des tuples dans la table ds

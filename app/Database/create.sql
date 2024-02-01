@@ -58,7 +58,8 @@ CREATE TABLE etudiant (
     id_etudiant SERIAL PRIMARY KEY,
     mail_etudiant VARCHAR(50) NOT NULL,
     nom_etudiant VARCHAR(50) NOT NULL,
-    prenom_etudiant VARCHAR(50) NOT NULL
+    prenom_etudiant VARCHAR(50) NOT NULL,
+    annee_etudiant INTEGER NOT NULL CHECK (annee_etudiant <=3 AND annee_etudiant >=1)
 );
 
 CREATE TABLE eligible (
