@@ -56,20 +56,15 @@
                       <td scope="col"><input id="enseignant" name="enseignant" placeholder="Enseignant"></td>
                       <td scope="col"></td>
                       <td scope="col">
-                        <div class="dropdown">
-                          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Semestre
-                          </button>
-                          <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Tous</a></li>
-                            <li><a class="dropdown-item" href="#">1</a></li>
-                            <li><a class="dropdown-item" href="#">2</a></li>
-                            <li><a class="dropdown-item" href="#">3</a></li>
-                            <li><a class="dropdown-item" href="#">4</a></li>
-                            <li><a class="dropdown-item" href="#">5</a></li>
-                            <li><a class="dropdown-item" href="#">6</a></li>
-                          </ul>
-                        </div>
+                          <select name="semestre" id="semestre">
+                            <option value="0">Semestre:</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                          </select>
                       </td>
                       <td scope="col"></td>
                     </tr>
@@ -162,24 +157,21 @@
               <h1 class="modal-title fs-5" id="staticBackdropLabel">Éditer un rattrapage</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <form action="" method="post">
             <div class="modal-body">
-              <form action="" method="post">
-                <input id="intitule" name="intitule" placeholder="Intitulé du DS"><br>
-                <input type="text" list="cars" />
-<datalist id="cars">
-  <option>Volvo</option>
-  <option>Saab</option>
-  <option>Mercedes</option>
-  <option>Audi</option>
-</datalist>
-<br>
-                <input type="submit">
-              </form>
+              
+                <input id="intitule" name="intitule" placeholder="Intitulé du DS" class ="w-100 my-2"><br>
+                <input type="text" id="ressource" name="ressource" placeholder="Ressource" class ="w-100 my-2" list="ressources"/><br>
+                <input type="text" id="enseignant" name="enseignant" placeholder="Enseignant" class ="w-100 my-2" list="enseignants"/>
+                
+                <br>
+              
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Understood</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+              <input type="submit" class="btn btn-primary" value="Confirmer">
             </div>
+          </form>
           </div>
         </div>
       </div>
@@ -190,5 +182,15 @@
           <p class="text-center text-body-secondary border-top py-2">SGRDS 2024</p>
         </footer>
       </div>
+      <!-- Datalists -->
+      <datalist id="ressources">
+        <option>R3.XX Communication</option>
+        <option>R3.XX Developpement</option>
+      </datalist>
+
+      <datalist id="enseignants">
+        <option>Laurence NIVET</option>
+        <option>Rodolphe CHARRIER</option>
+      </datalist>
 </body>
 </html>
