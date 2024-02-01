@@ -140,6 +140,13 @@
 
   <!-- Modal de suppression, dans l'idéal il faudrait en avoir qu'un pour tlm -->
 
+<script>
+  function btnEditPress(id){
+      console.log(id);
+    }
+</script>
+
+
   <?php
 
   $model_rattrapage = new RattrapageModele();
@@ -225,13 +232,13 @@
       echo "<input type=\"hidden\" id=\"identifiantEdit\" name=\"identifiantEdit\" value=\"\">";
       echo "<!-- Modifier la value avec JS selon le bouton selectionné-->";
       echo "<label>Intitulé du DS : </label>";
-      echo "<input id=\"intituleEdit\" name=\"intitule\" placeholder=\"Intitulé du DS\" class=\"w-100 my-2\" value=\" ".$ds[$rattrapge['id_ds']]['intitule_ds'] ."\" required><br>";
+      echo "<input id=\"intituleEdit".$rattrapge['id_ds']."\" name=\"intitule\" placeholder=\"Intitulé du DS\" class=\"w-100 my-2\" value=\" ".$ds[$rattrapge['id_ds']]['intitule_ds'] ."\" required><br>";
       echo "<label>Ressource : </label>";
-      echo "<input type=\"text\" id=\"ressourceEdit\" name=\"ressource\" placeholder=\"Ressource\" class=\"w-100 my-2\" value=\" ".$ds[$rattrapge['id_ds']]['ressource_ds'] ."\" list=\"ressources\" required /><br>";
+      echo "<input type=\"text\" id=\"ressourceEdit".$rattrapge['id_ds']."\" name=\"ressource\" placeholder=\"Ressource\" class=\"w-100 my-2\" value=\" ".$ds[$rattrapge['id_ds']]['ressource_ds'] ."\" list=\"ressources\" required /><br>";
       echo "<label>Enseignant : </label>";
-      echo "<input type=\"text\" id=\"enseignantEdit\" name=\"enseignant\" placeholder=\"Enseignant\" class=\"w-100 my-2\" value=\" ".$rattrapge['enseignant_rattrapage'] ."\" list=\"enseignants\" required /><br>";
+      echo "<input type=\"text\" id=\"enseignantEdit".$rattrapge['id_ds']."\" name=\"enseignant\" placeholder=\"Enseignant\" class=\"w-100 my-2\" value=\" ".$rattrapge['enseignant_rattrapage'] ."\" list=\"enseignants\" required /><br>";
       echo "<label>Type de DS : </label>";
-      echo "<select id=\"typeDSEdit\">";
+      echo "<select id=\"typeDSEdit".$rattrapge['id_ds']."\">";
       echo "<option id=\"papierEdit\">Papier</option>";
       echo "<option id=\"machineEdit\">Machine</option>";
       echo "<option id=\"oralEdit\">Oral</option>";
@@ -251,6 +258,9 @@
         echo "<li>".$etu['nom_etudiant']." ". $etu['prenom_etudiant']. "</li>";
       }
       echo "</ul>";
+
+      
+
       
 
 
@@ -259,11 +269,48 @@
       echo "<div class=\"modal-footer\">";
       echo "<button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Annuler</button>";
       echo "<input type=\"submit\" class=\"btn btn-primary\" id=\"ConfirmEdit" .$rattrapge['id_ds']."\" value=\"Confirmer\">";
+      
+      
+
+
       echo "</div>";
       echo "</form>";
       echo "</div>";
       echo "</div>";
       echo "</div>";
+      echo "<script>";
+      echo "let btn".$rattrapge['id_ds']." = document.getElementById(\"ConfirmEdit".$rattrapge['id_ds']."\");";
+      echo "btn".$rattrapge['id_ds'].".addEventListener(\"click\", function(ev){
+        let intitule = document.getElementById(\"intituleEdit".$rattrapge['id_ds']."\").value;
+        let ressource = document.getElementById(\"ressourceEdit".$rattrapge['id_ds']."\").value;
+        let enseignant = document.getElementById(\"enseignantEdit".$rattrapge['id_ds']."\").value;
+        let type = document.getElementById(\"typeDSEdit".$rattrapge['id_ds']."\").value;
+        let id = ".$rattrapge['id_ds'].";
+      
+        fetch('/update_rattrapage', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            id: id
+            intitule: intitule,
+            ressource: ressource,
+            enseignant: enseignant,
+            type: type,
+
+          }),
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+      
+      });";
+      echo "</script>";
     }
 
   ?>
@@ -281,21 +328,28 @@
           <h1 class="modal-title fs-5" id="staticBackdropLabel">Nouveau rattrapage</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form action="">
+        <form methode="POST" action="/add_ds">
           <div class="modal-body">
-            <input id="intitule" name="intitule" placeholder="Intitulé du DS" class="w-100 my-2" required><br>
-            <input type="text" id="ressource" name="ressource" placeholder="Ressource" class="w-100 my-2"
-              list="ressources" required /><br>
-            <input type="text" id="enseignant" name="enseignant" placeholder="Enseignant" class="w-100 my-2"
-              list="enseignants" required /><br>
+            <input id="intitule_ds" name="intitule_ds" placeholder="Intitulé du DS" class="w-100 my-2" required><br>
+            <input type="text" id="semestre_ds" name="semestre_ds" placeholder="semestre_ds" class="w-100 my-2" required /><br>
+            <input type="text" id="enseignant" name="enseignant" placeholder="Enseignant" class="w-100 my-2"/><br>
+            <input type="date" id="date" name="date" class="w-100 my-2"><br>
+            <input type="time" id="heure" name="heure" min="08:00" max="18:00" class="w-100 my-2" /><br>
+            <input type="text" id="durree" name="durree" placeholder="durree" class="w-100 my-2"/><br>
+            <input type="text" id="ressource" name="ressource" placeholder="Ressource" class="w-100 my-2" list="ressources" required /><br>
+            <select id="typeDS">
+              <option id="papier">Papier</option>
+              <option id="machine">Machine</option>
+              <option id="oral">Oral</option>
+            </select><br>
             <!-- TODO: Ici il faudrait faire en sorte de quand on saisit un étudiant et qu'on appuie sur  ca l'ajoute à la liste-->
-            <input type="text" id="etudiantAdd" name="etudiant" placeholder="Ajouter un étudiant" class="w-75 my-2"
+            <!-- <input type="text" id="etudiantAdd" name="etudiant" placeholder="Ajouter un étudiant" class="w-75 my-2"
               list="etudiants">
             <p class="btn btn-secondary my-2" id="btnAddStudent">+</p><br>
             <p>Étudiants absents :</p>
             <ul class="listeEtudiants">
 
-            </ul>
+            </ul> -->
 
           </div>
           <div class="modal-footer">
@@ -527,9 +581,7 @@
       }
     }
 
-    function update(id){
-      console.log(id);
-    }
+    
 
   </script>
 

@@ -15,6 +15,7 @@ class RattrapageModele extends Model {
         'etat_rattrapage',
         'enseignant_rattrapage'
     ];
+    
 
     /**
      * retourne tous les rattrapages, triés par date
