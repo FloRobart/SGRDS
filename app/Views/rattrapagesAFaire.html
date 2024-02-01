@@ -25,7 +25,11 @@
       </header>
       <section id="listeRattrapagesProg" class="text-center my-3 mx-2 h-100">
         <div class="container">
-            <h1>Rattrapages à Programmer</h1>
+            <div class="row">
+              <h1 class="col-11">Rattrapages à Programmer</h1>
+              <button class="col-1 btn btn-primary rounded" data-bs-toggle="modal" data-bs-target="#modalCreation">+</button>
+            </div>
+            
             <div class="table-responsive pb-5 mb-5">
                 <table class="table table-striped mb-5 pb-5">
                   <thead>
@@ -119,8 +123,12 @@
               <p>Êtes-vous sûr de vouloir supprimer ce rattrapage ?</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-              <button type="button" class="btn btn-primary">Supprimer</button>
+              <form>
+                <input type="hidden" id="identifiantSuppr" name="identifiantSuppr" value="1"> <!-- Modifier la value avec JS selon le bouton selectionné, -1 si nouveau bail -->
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <input type="submit" class="btn btn-warning" value="Supprimer">
+              </form>
+              
             </div>
           </div>
         </div>
@@ -162,7 +170,6 @@
       
 
       <!-- Modal d'édition du rattrapage POUR LE DIRECTEUR -->
-      <!-- A Réutiliser pour la création d'un nouveau DS -->
       <div class="modal fade" id="modalEdition" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -172,7 +179,41 @@
             </div>
             <form action="" method="post">
             <div class="modal-body">
+              <input type="hidden" id="identifiantEdit" name="identifiantEdit" value="1"> <!-- Modifier la value avec JS selon le bouton selectionné-->
+                <input id="intitule" name="intitule" placeholder="Intitulé du DS" class ="w-100 my-2" required><br>
+                <input type="text" id="ressource" name="ressource" placeholder="Ressource" class ="w-100 my-2" list="ressources" required/><br>
+                <input type="text" id="enseignant" name="enseignant" placeholder="Enseignant" class ="w-100 my-2" list="enseignants" required/><br>
+                <!-- TODO: Ici il faudrait faire en sorte de quand on saisit un étudiant et qu'on appuie sur  ca l'ajoute à la liste-->
+                <input type="text" id="etudiant" name="etudiant" placeholder="Ajouter un étudiant" class="w-75 my-2" list="etudiants">
+                <p class="btn btn-secondary my-2" onClick="">+</p><br>
+                <p>Étudiants absents :</p>
+                <ul>
+                  <!-- Je sais pas si j'ajoute une checkbox pour les étudiants justifiés ou si le dirlo ajoute que les absents justifiés-->
+                  <li><p>Esteban BREA HELL<a class="mx-2 btn btn-secondary">X</a></p></li>
+                  <li><p>Gomain RASCOIN<a class="mx-2 btn btn-secondary">X</a></p></li>
+                </ul>
               
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+              <input type="submit" class="btn btn-primary" value="Confirmer">
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal de création d'un rattrapage POUR LE DIRECTEUR -->
+      <div class="modal fade" id="modalCreation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Nouveau rattrapage</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="post">
+            <div class="modal-body">
+              <input type="hidden" id="identifiantEdit" name="identifiantEdit" value="1"> <!-- Modifier la value avec JS selon le bouton selectionné-->
                 <input id="intitule" name="intitule" placeholder="Intitulé du DS" class ="w-100 my-2" required><br>
                 <input type="text" id="ressource" name="ressource" placeholder="Ressource" class ="w-100 my-2" list="ressources" required/><br>
                 <input type="text" id="enseignant" name="enseignant" placeholder="Enseignant" class ="w-100 my-2" list="enseignants" required/><br>
