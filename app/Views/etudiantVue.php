@@ -131,38 +131,38 @@ function test()
                     <!-- Section à loop -->
                     <tr>
                     <?php
+                      use App\Models\EtudiantModele;
+                      use App\Models\EligibleModele;
                       use App\Models\RattrapageModele;
                       use App\Models\DSModele;
-                      use App\Models\EligibleModele;
-                      use App\Models\EtudiantModele;
                       // Récupérer les étudiants
                       $model_etudiant = new EtudiantModele();
+                      $model_eligible = new EligibleModele();
                       $etudiants = $model_etudiant->getAllEtudiants();
-
-                      $model_DS = new DSModele();
-                      $ds = $model_DS->getAllDS();
-                      $ds = array_column($ds, null, 'id_ds'); // Transform $ds into an associative array with 'id_ds' as keys
-
-
-                    
+                      $etudiantEligibles = $model_eligible->getAllEligible();
 
                       foreach ($etudiants as $etudiant) {
-                        echo"<tr>";
-                        echo"<td>".$etudiant['id_etudiant']."</td>";
-                        echo"<td>".$etudiant['mail_etudiant']."</td>";
-                        echo"<td>".$etudiant['nom_etudiant']."</td>";
-                        echo"<td>".$etudiant['prenom_etudiant']."</td>";
-                        echo"<td>".$etudiant['annee_etudiant']."</td>";
+                        foreach ($etudiantEligibles as $eligible) {
+                          if ($eligible['id_etudiant'] == $etudiant['id_etudiant']) {
+                            echo"<tr>";
+                            echo"<td>".$etudiant['id_etudiant']."</td>";
+                            echo"<td>".$etudiant['mail_etudiant']."</td>";
+                            echo"<td>".$etudiant['nom_etudiant']."</td>";
+                            echo"<td>".$etudiant['prenom_etudiant']."</td>";
+                            echo"<td>".$etudiant['annee_etudiant']."</td>";
 
-                        echo"<td>";
-                        echo'<button class="btn btn-primary rounded" data-bs-toggle="modal" data-bs-target="#modalInfo'.$etudiant['id_etudiant'].'".>';
-                        echo'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">';
-                        echo'<path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>';
-                        echo'</svg>';
-                        echo'</button>';
-                        echo"</td>";
-                        echo"</tr>";  
-                      
+                            echo"<td>";
+                            echo'<button class="btn btn-primary rounded" data-bs-toggle="modal" data-bs-target="#modalInfo'.$etudiant['id_etudiant'].'".>';
+                            echo'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">';
+                            echo'<path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>';
+                            echo'</svg>';
+                            echo'</button>';
+                            echo"</td>";
+                            echo"</tr>";
+
+                            break;
+                          }
+                        }
                       }
                       ?>
 
@@ -177,58 +177,67 @@ function test()
       </section>
 
       <?php
+        // j'ai la liste des étudiants
+        // pour chaque étudiant vérifier si il a un rattrapage
 
-            $model_Rattrapage = new RattrapageModele();
-            $rattrapges = $model_etudiant->getRattrapagesEligible($id_etudiant);
+        // récupérer le nom du DS avec l'ID
 
-            $model_DS = new DSModele();
-            $ds = $model_DS->getAllDS();
-            $ds = array_column($ds, null, 'id_ds'); // Transform $ds into an associative array with 'id_ds' as keys
-            $modele_etudiant = new EtudiantModele();
-            $model_eligible = new EligibleModele();
+        // elligible.id_rattrapage where elligible.id_etudiant == etudiant.id_etudiant = id_rattrapage
+        // rattrapage.id_ds where rattrapage.id_rattrapage == elligible.id_rattrapage = id_ds
+
+        /* Récupération des informations */
+        $model_etudiant = new EtudiantModele();
+        $model_eligible = new EligibleModele();
+        $model_rattrapage = new RattrapageModele();
+        $model_ds = new DSModele();
+        $etudiants = $model_etudiant->getAllEtudiants();
+        $etudiantEligibles = $model_eligible->getAllEligible();
 
 
-            foreach ($rattrapges as $rattrapge) {
-              $eligible = $model_eligible->getEligibleByRattrapage($rattrapge['id_ds']);
-              echo'<div class="modal fade" id="modalInfo'.$rattrapge['id_ds'].'" tabindex="-1" aria-labelledby="infoRattrapage'.$rattrapge['id_ds'].'" aria-hidden="true">';
+        foreach ($etudiants as $etudiant) {
+          foreach ($etudiantEligibles as $eligible) {
+            if ($eligible['id_etudiant'] == $etudiant['id_etudiant']) {
+              /* Récupération des données */
+              $eligible = $model_eligible->getEligibleByRattrapage($etudiant['id_etudiant']);
+
+              /* Initialisation de la popup */
+              echo'<div class="modal fade" id="modalInfo'.$etudiant['id_etudiant'].'" tabindex="-1" aria-labelledby="infoRattrapage'.$etudiant['id_etudiant'].'" aria-hidden="true">';
               echo'<div class="modal-dialog">';
               echo'<div class="modal-content">';
+
+              /* Header de la popup */
               echo'<div class="modal-header">';
-              echo'<h1 class="modal-title fs-5" id="exampleModalLabel">Rattrape</h1>';
-              echo'<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>';
+              echo'<h1 class="modal-title fs-5" id="exampleModalLabel">Rattrapes</h1>';
+              echo'<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>'; // La petite croix pour fermer la popup
               echo'</div>';
               echo'<div class="modal-body text-left">';
-              echo'<p>Date : '.$rattrapge['date_rattrapage'].'</p>';
-              echo'<p>Heure : '.$rattrapge['horaire_rattrapage'].'</p>';
-              echo'<p>Salle : '.$rattrapge['salle_rattrapage'].'</p>';
-              if ($ds[$rattrapge['id_ds']]['duree_ds']%60 >9){
-                echo'<p>Durée : '.intdiv($ds[$rattrapge['id_ds']]['duree_ds'],60).'h'.($ds[$rattrapge['id_ds']]['duree_ds']%60).'</p>';
-              }else{
-                echo'<p>Durée : '.intdiv($ds[$rattrapge['id_ds']]['duree_ds'],60).'h'.($ds[$rattrapge['id_ds']]['duree_ds']%60).'0'.'</p>';
-              }
-              
-              echo'<p>Étudiants concernés :</p>';
+
+              /* Informations */
+              echo'<p>DS à rattrapé :</p>';
               echo'<ul>';
-              foreach ($eligible as $etudiant) {
-                $etudiantConcerner = $modele_etudiant->getEtudiantById($etudiant['id_etudiant']);
-                echo'<li>'.$etudiantConcerner['nom_etudiant']. ' '. $etudiantConcerner['prenom_etudiant'].'</li>';
+
+              for ($i = 0; $i < count($eligible); $i++) {
+                $idRattrapage = $eligible[$i]['id_rattrapage'];
+                $idDs = $model_rattrapage->getIdDs($idRattrapage);
+                $nomDS = $model_ds->getNomDs($idDs);
+                echo'<li>'.$nomDS.'</li>';
               }
+
               echo'</ul>';
               echo'</div>';
+
+              /* Footer de la popup */
               echo'<div class="modal-footer">';
               echo'<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>';
               echo'</div>';
               echo'</div>';
               echo'</div>';
               echo'</div>';
+
+              break;
             }
-
-      
-
-                    
-
-
-        
+          }
+        }
       ?>
 
 

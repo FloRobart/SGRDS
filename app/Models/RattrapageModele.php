@@ -42,6 +42,11 @@ class RattrapageModele extends Model {
         return $this->query('SELECT * FROM etudiant WHERE id_etudiant IN (SELECT id_etudiant FROM rattrapage_etudiant WHERE id_rattrapage = '.$id_rattrapage.')')->getResult();
     }
 
+    public function getIdDs($id_rattrapage)
+    {
+        return $this->select('id_ds')->where('id_rattrapage', $id_rattrapage)->first();
+    }
+
     /**
      * modifie le rattapage correspondant
      * @param $id_rattrapage

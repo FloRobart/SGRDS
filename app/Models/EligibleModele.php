@@ -20,4 +20,9 @@ class EligibleModele extends Model
         return $this->where('id_rattrapage', $id_rattrapage)->where('justification', true)->findAll();
     }
 
+    public function getAllEligible()
+    {
+        return $this->findAll();
+    }
+
 }

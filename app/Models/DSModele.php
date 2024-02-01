@@ -60,4 +60,9 @@ class DSModele extends Model {
         return $this->where('semestre_ds', $semestre)->orderBy('date_ds', 'ASC')->findAll();
     }
 
+
+    public function getNomDs($id_ds)
+    {
+        return $this->select('intitule_ds')->where('id_ds', $id_ds)->first()['intitule_ds'];
+    }
 }
