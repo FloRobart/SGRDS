@@ -25,6 +25,19 @@ class DSModele extends Model {
         return $this->orderBy('date_ds', 'ASC')->findAll();
     }
 
+    public function updateDS($id_ds, $intitule_ds, $semestre_ds, $date_ds, $heure_ds, $duree_ds, $ressource_ds, $type_ds)
+    {
+        $this->where('id_ds', $id_ds)->set([
+            'intitule_ds' => $intitule_ds,
+            'semestre_ds' => $semestre_ds,
+            'date_ds' => $date_ds,
+            'heure_ds' => $heure_ds,
+            'duree_ds' => $duree_ds,
+            'ressource_ds' => $ressource_ds,
+            'type_ds' => $type_ds
+        ])->update();
+    }
+
     /**
      * retourne tous les ds qui ont un rattrapage, triés par date
      */

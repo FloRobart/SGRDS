@@ -20,6 +20,18 @@ class RattrapagesController extends Controller
     {
         return view('homeVue');
     }
+
+    public function updateRattrapage()
+    {
+        $model = new RattrapageModele();
+        $modelDs = new DSModele();
+        $modelAdmin = new AdministrateurModel();
+        $data = [];
+        $data['rattrapages'] = $model->getAllRattrapages();
+        $data['ds'] = $modelDs->getAllDS();
+        $data['admins'] = $modelAdmin->getAllAdmins();
+        return view('updateRattrapageVue', $data);
+    }
     public function getRattrapagesProg()
     {
         $model = new RattrapageModele();

@@ -39,3 +39,8 @@ $routes->get('details_rattrapage', 'RattrapagesController::detailsRattrapage');
 
 /* Page avec la liste des étudiants qui ont un rattrapage */
 $routes->get('etudiants', 'EtudiantControleur::index');
+
+/*Update rattrapage*/
+$routes->post('update_rattrapage', 'RattrapagesController::updateRattrapage');
+$routes->match(['get', 'post'],'add_ds', 'DSController::addDs');
+
