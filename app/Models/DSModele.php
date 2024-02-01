@@ -8,6 +8,7 @@ class DSModele extends Model {
 
     // variables membres = colonnes de la table
     protected $allowedFields = [
+        'intitule_ds',
         'semestre_ds',
         'date_ds',
         'heure_ds',

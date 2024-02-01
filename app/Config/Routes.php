@@ -20,11 +20,11 @@ $routes->match(['get', 'post'], 'connexion/validationConnexion', 'Authentificati
 $routes->get('profile', 'AuthentificationController::profile');
 
 /* Envoie du mail pour réinitialiser le mot de passe */
-$routes->match(['get', 'post'], 'forgot_password/sendResetLink', 'AuthentificationController::sendResetLink');
+$routes->match(['get', 'post'], 'sendResetLink', 'AuthentificationController::sendResetLink');
 
 /* Pages de réinitialisation du mot de passe */
 $routes->get('reset_password/(:any)', 'AuthentificationController::reset/$1');
-$routes->match(['get', 'post'], 'forgot_password/update_password','AuthentificationController::updatePassword');
+$routes->match(['get', 'post'], 'update_password','AuthentificationController::updatePassword');
 
 $routes->get('email', 'EmailFormController::index');
 $routes->post('email/send', 'EmailFormController::sendEmailsByButton');
