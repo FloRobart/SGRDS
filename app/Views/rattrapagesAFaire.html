@@ -150,6 +150,7 @@
       
 
       <!-- Modal d'édition du rattrapage POUR LE DIRECTEUR -->
+      <!-- A Réutiliser pour la création d'un nouveau DS -->
       <div class="modal fade" id="modalEdition" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -162,9 +163,15 @@
               
                 <input id="intitule" name="intitule" placeholder="Intitulé du DS" class ="w-100 my-2"><br>
                 <input type="text" id="ressource" name="ressource" placeholder="Ressource" class ="w-100 my-2" list="ressources"/><br>
-                <input type="text" id="enseignant" name="enseignant" placeholder="Enseignant" class ="w-100 my-2" list="enseignants"/>
-                
-                <br>
+                <input type="text" id="enseignant" name="enseignant" placeholder="Enseignant" class ="w-100 my-2" list="enseignants"/><br>
+                <input type="text" id="etudiant" name="etudiant" placeholder="Ajouter un étudiant" class="w-75 my-2" list="etudiants">
+                <p class="btn btn-secondary my-2" onClick="">+</p><br>
+                <p>Étudiants absents :</p>
+                <ul>
+                  <!-- Je sais pas si j'ajoute une checkbox pour les étudiants justifiés ou si le dirlo ajoute que les absents justifiés-->
+                  <li><p>Esteban BREA HELL<a class="mx-2 btn btn-secondary">X</a></p></li>
+                  <li><p>Gomain RASCOIN<a class="mx-2 btn btn-secondary">X</a></p></li>
+                </ul>
               
             </div>
             <div class="modal-footer">
@@ -191,6 +198,11 @@
       <datalist id="enseignants">
         <option>Laurence NIVET</option>
         <option>Rodolphe CHARRIER</option>
+      </datalist>
+
+      <datalist id="etudiants">
+        <option>Esteban BREA HELL</option>
+        <option>Gomain RASCOIN</option>
       </datalist>
 </body>
 </html>
