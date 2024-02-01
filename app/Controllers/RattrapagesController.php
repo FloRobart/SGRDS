@@ -14,6 +14,14 @@ class RattrapagesController extends Controller
     /**
      * Permet d'afficher la page d'accueil
      */
+    public function index()
+    {
+        return view('homeVue');
+    }
+
+    /**
+     * Permet d'afficher la page d'accueil
+     */
     public function rattrapagesAFaire()
     {
         return view('rattrapagesAFaireVue');

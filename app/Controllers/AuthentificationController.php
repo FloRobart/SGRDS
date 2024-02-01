@@ -13,14 +13,6 @@ class AuthentificationController extends Controller
 
 
     /**
-     * Permet d'afficher la page d'accueil
-     */
-    public function index()
-    {
-        return view('homeVue');
-    }
-
-    /**
      * Permet d'afficher la page de profil
      */
     public function profile()
