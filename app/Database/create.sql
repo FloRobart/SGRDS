@@ -32,8 +32,7 @@ CREATE TABLE administrateur (
 
 CREATE TABLE ds (
     id_ds SERIAL PRIMARY KEY,
-    annee_ds INTEGER NOT NULL,
-    semestre_ds VARCHAR(8) NOT NULL CHECK (semestre_ds IN ('PAIR', 'IMPAIR')),
+    semestre_ds INTEGER NOT NULL CHECK (semestre_ds <=6 AND semestre_ds >=1),
     date_ds DATE NOT NULL,
     heure_ds TIME NOT NULL,
     duree_ds INTEGER NOT NULL,

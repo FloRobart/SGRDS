@@ -8,7 +8,6 @@ class DSModele extends Model {
 
     // variables membres = colonnes de la table
     protected $allowedFields = [
-        'annee_ds',
         'semestre_ds',
         'date_ds',
         'heure_ds',
@@ -49,6 +48,15 @@ class DSModele extends Model {
     public function getAllDSByType($type)
     {
         return $this->where('type_ds', $type)->orderBy('date_ds', 'ASC')->findAll();
+    }
+
+    /**
+     * retourne tous les ds du semestre correspondant, triés par date
+     * @param $semestre
+     */
+    public function getAllDSBySemestre($semestre)
+    {
+        return $this->where('semestre_ds', $semestre)->orderBy('date_ds', 'ASC')->findAll();
     }
 
 }
