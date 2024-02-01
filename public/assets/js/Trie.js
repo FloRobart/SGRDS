@@ -1,4 +1,6 @@
-function playerSearch() {
+console.log("Trie.js");
+window.onload = function playerSearch() {
+    
     let ressource = document.getElementById("ressource");
     let inputRessource = (ressource != null ? ressource.value.toUpperCase() : null);
     let enseignant = document.getElementById("enseignant");

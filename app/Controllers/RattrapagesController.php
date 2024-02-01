@@ -1,5 +1,7 @@
 <?php 
 namespace App\Controllers;  
+use App\Models\DSModele;
+use App\Models\RattrapageModele;
 use CodeIgniter\Controller;
 use App\Models\AdministrateurModel;
 
@@ -17,6 +19,34 @@ class RattrapagesController extends Controller
     public function index()
     {
         return view('homeVue');
+    }
+    public function getRattrapagesProg()
+    {
+        $model = new RattrapageModele();
+        $modelDs = new DSModele();
+    
+        // Get rattrapages and ds data
+        $rattrapages = $model->getAllRattrapagesByType("PROGRAMME");
+        //print it to see if it works
+        $ds = $modelDs->getDS();
+    
+        // Create an associative array with ds IDs as keys and ds data as values
+        $dsById = [];
+        foreach ($ds as $d) {
+            $dsById[$d->id] = $d;
+        }
+    
+        // Add ds data to each rattrapage
+        foreach ($rattrapages as $rattrapage) {
+            if (isset($dsById[$rattrapage->ds_id])) {
+                $rattrapage->ds = $dsById[$rattrapage->ds_id];
+            }
+        }
+    
+        // Return rattrapages with linked ds data
+        $data['rattrapages'] = $rattrapages;
+    
+        return view('rattrapagesProgVue', $data);
     }
 
     /**
