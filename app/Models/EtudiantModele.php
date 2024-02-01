@@ -23,6 +23,15 @@ class EtudiantModele extends Model
     }
 
     /**
+     * Permet de récupérer un étudiant par son id
+     * @param $id
+     */
+    public function getEtudiantById($id)
+    {
+        return $this->where('id_etudiant', $id)->first();
+    }
+
+    /**
      * Supprime un étudiant de la table
      * @param $id
      */
