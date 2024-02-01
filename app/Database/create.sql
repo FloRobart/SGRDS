@@ -32,6 +32,7 @@ CREATE TABLE administrateur (
 
 CREATE TABLE ds (
     id_ds SERIAL PRIMARY KEY,
+    intitule_ds VARCHAR(50) NOT NULL,
     semestre_ds INTEGER NOT NULL CHECK (semestre_ds <=6 AND semestre_ds >=1),
     date_ds DATE NOT NULL,
     heure_ds TIME NOT NULL,

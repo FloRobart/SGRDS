@@ -18,20 +18,20 @@ DELETE FROM etudiant;
 INSERT INTO etudiant (mail_etudiant, nom_etudiant, prenom_etudiant) VALUES ('gomain.rascoin@vmail.bom','Rascoin', 'Gomain');
 INSERT INTO etudiant (mail_etudiant, nom_etudiant, prenom_etudiant) VALUES ('boris.flobart@coldmail.fr','Flobart', 'Boris');
 INSERT INTO etudiant (mail_etudiant, nom_etudiant, prenom_etudiant) VALUES ('plorian.ficele@mozarella.fom','Ficele', 'Plorian');
-INSERT INTO etudiant (mail_etudiant, nom_etudiant, prenom_etudiant) VALUES ('alexandre.michel@estunmmorpgautourpartout.com','Michel', 'Alexandre');
+INSERT INTO etudiant (mail_etudiant, nom_etudiant, prenom_etudiant) VALUES ('alexandre.michel@estunmmorpgautourpartour.com','Michel', 'Alexandre');
 INSERT INTO etudiant (mail_etudiant, nom_etudiant, prenom_etudiant) VALUES ('bzzzzteban.laruche@gmiel.fr','Laruche', 'Bzzzzteban');
 
 
 -- insertion des tuples dans la table ds
-INSERT INTO ds (semestre_ds, date_ds, heure_ds, duree_ds, ressource_ds, type_ds) VALUES (1, '2020-01-11', '09:30:00', 120, 'Programmation Multimédia', 'MACHINE');
-INSERT INTO ds (semestre_ds, date_ds, heure_ds, duree_ds, ressource_ds, type_ds) VALUES (3, '2019-11-11', '10:00:00', 90, 'Communication', 'PAPIER');
-INSERT INTO ds (semestre_ds, date_ds, heure_ds, duree_ds, ressource_ds, type_ds) VALUES (2, '2020-02-24', '14:00:00', 75, 'Programmation Multimédia', 'PAPIER');
-INSERT INTO ds (semestre_ds, date_ds, heure_ds, duree_ds, ressource_ds, type_ds) VALUES (4, '2021-03-02', '09:30:00', 120, 'Communication', 'MACHINE');
-INSERT INTO ds (semestre_ds, date_ds, heure_ds, duree_ds, ressource_ds, type_ds) VALUES (5, '2021-10-02', '08:30:00', 60, 'Base de données', 'MACHINE');
-INSERT INTO ds (semestre_ds, date_ds, heure_ds, duree_ds, ressource_ds, type_ds) VALUES (1, '2022-11-27', '08:15:00', 90, 'Droit', 'MACHINE');
-INSERT INTO ds (semestre_ds, date_ds, heure_ds, duree_ds, ressource_ds, type_ds) VALUES (5, '2022-11-27', '10:00:00', 90, 'Droit', 'PAPIER');
-INSERT INTO ds (semestre_ds, date_ds, heure_ds, duree_ds, ressource_ds, type_ds) VALUES (1, '2021-09-30', '09:00:00', 90, 'Base de données', 'PAPIER');
-INSERT INTO ds (semestre_ds, date_ds, heure_ds, duree_ds, ressource_ds, type_ds) VALUES (6, '2021-04-16', '14:30:00', 120, 'Développement IHM', 'MACHINE');
+INSERT INTO ds (semestre_ds, intitule_ds, date_ds, heure_ds, duree_ds, ressource_ds, type_ds) VALUES (1, 'DS Manipulation d images',   '2020-01-11', '09:30:00', 120, 'Programmation Multimédia', 'MACHINE');
+INSERT INTO ds (semestre_ds, intitule_ds, date_ds, heure_ds, duree_ds, ressource_ds, type_ds) VALUES (3, 'Les biais cognitifs',        '2019-11-11', '10:00:00', 90, 'Communication', 'PAPIER');
+INSERT INTO ds (semestre_ds, intitule_ds, date_ds, heure_ds, duree_ds, ressource_ds, type_ds) VALUES (2, 'DS jeux de couleurs',        '2020-02-24', '14:00:00', 75, 'Programmation Multimédia', 'PAPIER');
+INSERT INTO ds (semestre_ds, intitule_ds, date_ds, heure_ds, duree_ds, ressource_ds, type_ds) VALUES (4, 'La mise en page',            '2021-03-02', '09:30:00', 120, 'Communication', 'MACHINE');
+INSERT INTO ds (semestre_ds, intitule_ds, date_ds, heure_ds, duree_ds, ressource_ds, type_ds) VALUES (5, 'automatisation PlpgSQL',     '2021-10-02', '08:30:00', 60, 'Base de données', 'MACHINE');
+INSERT INTO ds (semestre_ds, intitule_ds, date_ds, heure_ds, duree_ds, ressource_ds, type_ds) VALUES (1, 'Droit du numérique',         '2022-11-27', '08:15:00', 90, 'Droit', 'MACHINE');
+INSERT INTO ds (semestre_ds, intitule_ds, date_ds, heure_ds, duree_ds, ressource_ds, type_ds) VALUES (5, 'Droit des contrats',         '2022-11-27', '10:00:00', 90, 'Droit', 'PAPIER');
+INSERT INTO ds (semestre_ds, intitule_ds, date_ds, heure_ds, duree_ds, ressource_ds, type_ds) VALUES (1, 'Les bases de MongoDB',       '2021-09-30', '09:00:00', 90, 'Base de données', 'PAPIER');
+INSERT INTO ds (semestre_ds, intitule_ds, date_ds, heure_ds, duree_ds, ressource_ds, type_ds) VALUES (6, 'DS Interfaces interactives', '2021-04-16', '14:30:00', 120, 'Développement IHM', 'MACHINE');
 
 
 -- insertion des tuples dans la table rattrapage
