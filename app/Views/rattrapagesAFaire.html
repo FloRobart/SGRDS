@@ -134,16 +134,28 @@
               <h1 class="modal-title fs-5" id="staticBackdropLabel">Programmer un rattrapage</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <form action="" method="post">
             <div class="modal-body">
-              <form action="" method="post">
-                <input id="intitule" name="intitule" placeholder="Intitulé du DS">
-                <input type="submit">
-              </form>
+                <label>Date du rattrapage : </label>
+                <input type="date" id="date" name="date" class ="w-100 my-2" required><br>
+                <label>Heure du rattrapage : </label>
+                <input type="time" id="heure" name="heure" min="08:00" max="18:00" class ="w-100 my-2" required /><br>
+                <label>Durée du rattrapage : </label>
+                <input type="time" id="duree" name="duree" min="00:30" max="04:00" class ="w-100 my-2" required /><br>
+                <input type="text" id="salle" name="salle" placeholder="Salle du rattrapage" class ="w-100 my-2" required/><br>
+
+                <p>Étudiants absents :</p>
+                <ul>
+                  <li><p><input type="checkbox" class="mx-2">Esteban BREA HELL</p></li>
+                  <li><p><input type="checkbox" class="mx-2">Gomain RASCOIN</p></li>
+                </ul>
+              
             </div>
-            <!--<div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <-<button type="button" class="btn btn-primary">Understood</button>
-            </div>-->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+              <input type="submit" class="btn btn-primary" value="Confirmer">
+            </div>
+          </form>
           </div>
         </div>
       </div>
@@ -161,9 +173,9 @@
             <form action="" method="post">
             <div class="modal-body">
               
-                <input id="intitule" name="intitule" placeholder="Intitulé du DS" class ="w-100 my-2"><br>
-                <input type="text" id="ressource" name="ressource" placeholder="Ressource" class ="w-100 my-2" list="ressources"/><br>
-                <input type="text" id="enseignant" name="enseignant" placeholder="Enseignant" class ="w-100 my-2" list="enseignants"/><br>
+                <input id="intitule" name="intitule" placeholder="Intitulé du DS" class ="w-100 my-2" required><br>
+                <input type="text" id="ressource" name="ressource" placeholder="Ressource" class ="w-100 my-2" list="ressources" required/><br>
+                <input type="text" id="enseignant" name="enseignant" placeholder="Enseignant" class ="w-100 my-2" list="enseignants" required/><br>
                 <input type="text" id="etudiant" name="etudiant" placeholder="Ajouter un étudiant" class="w-75 my-2" list="etudiants">
                 <p class="btn btn-secondary my-2" onClick="">+</p><br>
                 <p>Étudiants absents :</p>
