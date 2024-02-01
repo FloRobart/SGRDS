@@ -4,11 +4,15 @@
 <a href="<?php echo base_url(); ?>profile" class="btn btn-primary">Aller dans le profile (si tu te connecte pas ça marche pas)</a><br />
 <a href="<?php echo base_url(); ?>email" class="btn btn-primary">Test d'Esteban pour l'envoie de plusieurs mail</a><br />
 <a href="<?php echo base_url(); ?>deconnexion" class="btn btn-primary">Se déconnecter</a><br />
+<a href="<?php echo base_url(); ?>rattrapages_a_faire" class="btn btn-primary">Rattrapages à faire</a><br />
+<a href="<?php echo base_url(); ?>rattrapages_prog" class="btn btn-primary">Rattrapages programmés</a><br />
+<a href="<?php echo base_url(); ?>details_rattrapage" class="btn btn-primary">Détails d'un rattrapage</a><br />
 <a href="<?php echo base_url(); ?>etudiants" class="btn btn-primary">Test sur les étudiants (pour la bado)</a><br /><br />
 
 <h1>Routes</h1>
 <pre class="border border-dark p-2">
-$routes->get('/', 'AuthentificationController::index');
+/* Accueil */
+$routes->get('/', 'RattrapagesController::index');
 
 /* Pages d'inscriptions */
 $routes->get('inscription', 'AuthentificationController::inscription');
@@ -33,6 +37,11 @@ $routes->post('email/send', 'EmailFormController::sendEmailsByButton');
 
 /* Déconnexion */
 $routes->get('deconnexion', 'AuthentificationController::deconnexion');
+
+/* Gestions des rattrapages */
+$routes->get('rattrapages_a_faire', 'RattrapagesController::rattrapagesAFaire');
+$routes->get('rattrapages_prog', 'RattrapagesController::rattrapagesProg');
+$routes->get('details_rattrapage', 'RattrapagesController::detailsRattrapage');
 
 /* Test sur les étudiants (pour la bado) */
 $routes->get('etudiants', 'EtudiantControleur::index');
