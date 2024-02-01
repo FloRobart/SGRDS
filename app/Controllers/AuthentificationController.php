@@ -40,7 +40,7 @@ class AuthentificationController extends Controller
     {
         $rules = [
             'nom_admin'       => 'required|min_length[2]|max_length[50]',
-            'email'           => 'required|min_length[4]|max_length[100]|valid_email|is_unique[administrateur.email]',
+            'email'           => 'required|min_length[4]|max_length[150]|valid_email|is_unique[administrateur.email]',
             'mdp_admin'       => 'required|min_length[4]|max_length[50]',
             'confirmpassword' => 'matches[mdp_admin]'
         ];
@@ -147,8 +147,8 @@ class AuthentificationController extends Controller
 
             /* Paramètres du mail */
             $from ='portgasd.ace491803@gmail.com';
-            $subject = 'réinitialisation de mot de passe';
-            $message = 'Cliquez sur le lien suivant pour réinitialiser MDP : ' . site_url("reset_password/$token?email=$emailTo");
+            $subject = 'réinitialisation de votre mot de passe SGRDS';
+            $message = 'Cliquez sur le lien suivant pour réinitialiser votre mot de passe : ' . site_url("reset_password/$token?email=$emailTo");
 
             /* Utilisation de la classe email */
             $emailService = \Config\Services::email();
@@ -160,8 +160,7 @@ class AuthentificationController extends Controller
             /* Envoi du mail */
             if ($emailService->send())
             {
-                // TODO : Afficher un message de succès + ajouter un bouton pour coller le token qui permettra de réinitialiser le mot de passe
-                echo 'E-mail envoyé avec succès.<br />Vérifiez votre boîte de réception puis fermet cette onglet.';
+                return view('sendResetLinkVue', ['email' => $emailTo]);
             }
             else
             {
@@ -205,6 +204,7 @@ class AuthentificationController extends Controller
     {
         $administrateurModel = new AdministrateurModel();
         $email = $this->request->getPost('email');
+        //echo var_dump($email);
         $user = $administrateurModel->where('email', $email)->first();
         $token = $administrateurModel->select('reset_token')->where('email', $email)->first();
         $tokenExpiration = $administrateurModel->select('reset_token_expiration')->where('email', $email)->first();
@@ -214,18 +214,17 @@ class AuthentificationController extends Controller
         // Valider et traiter les données du formulaire
         if ($user && $password === $confirmPassword && $token && $tokenExpiration > date('Y-m-d H:i:s'))
         {
-            // Mettre à jour le mot de passe et réinitialiser le jeton
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
             $administrateurModel->set('mdp_admin', $hashedPassword)
             ->set('reset_token', null)
             ->set('reset_token_expiration', null)
             ->update($user['id']);
 
-            return '<span>Mot de passe réinitialisé avec succès.</span><br /><input type="button" value="Retour à la page de connexion" onclick="window.location.href=\'/connexion\'">';
+            return view('updatePasswordVue', ['success' => true]);
         }
         else
         {
-            return '<span>Erreur lors de la réinitialisation du mot de passe.</span><br /><input type="button" value="Retour à la page de connexion" onclick="window.location.href=\'/connexion\'">';
+            return view('updatePasswordVue', ['success' => false]);
         }
     }
 
