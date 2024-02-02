@@ -217,7 +217,7 @@ function test()
               echo'<ul>';
 
               for ($i = 0; $i < count($eligible); $i++) {
-                $idRattrapage = $eligible[$i]['id_rattrapage'];
+                $idRattrapage = $eligible[$i]['id_etudiant'];
                 $idDs = $model_rattrapage->getIdDs($idRattrapage);
                 $nomDS = $model_ds->getNomDs($idDs);
                 echo'<li>'.$nomDS.'</li>';

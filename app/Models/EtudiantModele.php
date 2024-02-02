@@ -66,4 +66,9 @@ class EtudiantModele extends Model
     {
         return $this->query('SELECT * FROM rattrapage WHERE id_rattrapage IN (SELECT id_rattrapage FROM eligible WHERE id_etudiant = '.$id_etudiant.')')->getResult();
     }
+
+    public function getIdRattrapagesEligible($id_etudiant)
+    {
+        return $this->query('SELECT id_rattrapage FROM eligible WHERE id_etudiant = '.$id_etudiant)->getResult();
+    }
 }
