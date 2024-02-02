@@ -20,6 +20,11 @@ class AuthentificationController extends Controller
         echo view('profileVue', session()->get());
     }
 
+    public function etudiant()
+    {
+        return view('etudiantVue');
+    }
+
     /*=============*/
     /* INSCRIPTION */
     /*=============*/

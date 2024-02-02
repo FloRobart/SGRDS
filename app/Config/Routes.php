@@ -35,10 +35,10 @@ $routes->get('deconnexion', 'AuthentificationController::deconnexion');
 /* Gestions des rattrapages */
 $routes->get('rattrapages_a_faire', 'RattrapagesController::rattrapagesAFaire');
 $routes->get('rattrapages_prog', 'RattrapagesController::rattrapagesProg');
-$routes->get('details_rattrapage', 'RattrapagesController::detailsRattrapage');
 
 /* Page avec la liste des étudiants qui ont un rattrapage */
-$routes->get('etudiants', 'EtudiantControleur::index');
+$routes->get('etudiants', 'AuthentificationController::etudiant');
+$routes->get('details_rattrapage', 'RattrapagesController::detailsRattrapage');
 
 /*Update rattrapage*/
 $routes->post('update_rattrapage', 'RattrapagesController::updateRattrapage');
