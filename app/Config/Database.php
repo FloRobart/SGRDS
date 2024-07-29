@@ -25,11 +25,11 @@ class Database extends Config
      * The default database connection.
      */
     public array $default = [
-        'DSN'          => 'Postgre://rf211022:|Tr3jkj3rT|@localhost:5432/rf211022',
+        'DSN'          => '<database url>',
         'hostname'     => 'localhost',
-        'username'     => 'rf211022',
-        'password'     => '|Tr3jkj3rT|',
-        'database'     => 'rf211022',
+        'username'     => '<username>',
+        'password'     => '<password>',
+        'database'     => '<database name>',
         'DBDriver'     => 'posgresql',
         'DBPrefix'     => '',
         'pConnect'     => false,
